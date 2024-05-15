@@ -1,0 +1,30 @@
+.createButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3.25rem;
+  padding: 1rem;
+  border: none;
+  background: var(--blue-500);
+  color: var(--gray-100);
+  line-height: 1;
+  font-weight: 700;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  transform: translateY(-50%);
+  margin-bottom: 2.375rem;
+  transition: background-color 0.1s;
+}
+
+.createButton:hover {
+  background: var(--blue-300);
+}
+
+.createButton svg {
+  fill: var(--gray-100);
+  font-weight: 700;
+  width: 1.125rem;
+  height: 1.125rem;
+}

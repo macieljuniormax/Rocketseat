@@ -1,0 +1,11 @@
+.wrapper {
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto 2rem;
+}
+
+.taskCreator {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}

@@ -28,5 +28,11 @@ public class HelloWorld {
     }
 
     System.out.println("***********************");
+    System.out.println(dadoDoTipoDouble);
+    System.out.println(dadoDoTipoFloat);
+    System.out.println(dadoDoTipoInt);
+    System.out.println(dadoTipoBoolean);
+    System.out.println(dadoTipoLongo);
+    System.out.println(dadoTipoString);
   }
 }

@@ -18,5 +18,6 @@ public class ColecaoHashSet {
 
     System.out.println(numeros.contains(10));
     System.out.println(numeros.contains(20));
+
   }
 }

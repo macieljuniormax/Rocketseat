@@ -8,6 +8,7 @@ public class Colecoes {
     notas.put("Dani", 9);
 
     var nota = notas.get("Dani");
+    System.out.println(nota);
 
     for (Map.Entry<String, Integer> entry : notas.entrySet()) {
       String key = entry.getKey();

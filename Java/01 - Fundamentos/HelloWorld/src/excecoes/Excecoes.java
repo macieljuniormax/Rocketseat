@@ -12,6 +12,7 @@ public class Excecoes {
   // compilador não consegue prever no momento da compilação, geralmente ocorrendo
   // durante a execução do programa.
 
+  @SuppressWarnings("null")
   public static void main(String[] args) {
     // try {
     // validarNumero();

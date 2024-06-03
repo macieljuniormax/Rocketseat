@@ -1,6 +1,7 @@
 package wrapper;
 
 public class Wrapper {
+  @SuppressWarnings("unused")
   public static void main(String[] args) {
     int tipoInt = 1;
     float tipoFloat = 1;

@@ -1,23 +1,13 @@
-public class MessengerSystem {
-    public void enviarMensagem () {
-        if (this.validaConectadoInternet()) {
-            System.out.println("Enviando Mensgaem");
-        } else {
-            System.out.println("Computador offline");
-        }
-    }
+public abstract class MessengerSystem {
+    public abstract void enviarMensagem ();
+    public abstract void receberMensagem ();
 
-    public void receberMensagem () {
-        System.out.println("Recebendo Mensagem");
-        this.salvarHistoricoMensagem();
-    }
+    // private boolean validaConectadoInternet () {
+    //     System.out.println("Validando de está conectado à internet");
+    //     return true;
+    // }
 
-    private boolean validaConectadoInternet () {
-        System.out.println("Validando de está conectado à internet");
-        return true;
-    }
-
-    private void salvarHistoricoMensagem () {
-        System.out.println("Salvando o histórico de mensagens");
-    }
+    // private void salvarHistoricoMensagem () {
+    //     System.out.println("Salvando o histórico de mensagens");
+    // }
 }

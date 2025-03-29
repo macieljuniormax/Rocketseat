@@ -5,6 +5,7 @@ import java.util.List;
 public class Biblioteca {
     private List<Livro> livros = new ArrayList<>();
     private List<Autor> autores = new ArrayList<>();
+    private List<Cliente> clientes = new ArrayList<>();
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public List<Livro> getLivros() {
@@ -25,7 +26,30 @@ public class Biblioteca {
         this.livros.add(livro);
     }
 
+    public void adicionarCliente(int id, String nome, LocalDate dataNascimento, String email) {
+        Cliente cliente = new Cliente(id, nome, dataNascimento, email);
+        this.clientes.add(cliente);
+    }
+
     public void emprestarLivro(int idCliente, Livro livro) {
 
+    }
+
+    public Livro buscarLivro(int id) {
+        for (Livro livro : livros) {
+            if (livro.getId() == id) {
+                return livro;
+            }
+        }
+        return null;
+    }
+
+    public Cliente buscarCliente(int id) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getId() == id) {
+                return cliente;
+            }
+        }
+        return null;
     }
 }

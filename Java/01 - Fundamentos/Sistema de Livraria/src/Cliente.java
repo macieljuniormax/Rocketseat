@@ -1,12 +1,12 @@
 import java.time.LocalDate;
 
 public class Cliente {
-    private long id;
+    private int id;
     private String nome;
     private LocalDate dataNascimento;
     private String email;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
     public String getNome() {

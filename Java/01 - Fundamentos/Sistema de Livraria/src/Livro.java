@@ -1,14 +1,24 @@
 import java.time.LocalDate;
 
 public class Livro {
-    private long id;
+    private int id;
     private String titulo;
     private String autor;
     private boolean disponivel;
     private LocalDate dataCadastro;
     private LocalDate dataAtualizacao;
 
-    public long getId() {
+    public Livro(int id, String titulo, String autor, boolean disponivel, LocalDate dataCadastro,
+            LocalDate dataAtualizacao) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.disponivel = disponivel;
+        this.dataCadastro = dataCadastro;
+        this.dataAtualizacao = dataAtualizacao;
+    }
+    
+    public int getId() {
         return id;
     }
     public String getTitulo() {

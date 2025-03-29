@@ -1,11 +1,11 @@
 import java.time.LocalDate;
 
 public class Autor {
-    private long id;
+    private int id;
     private String nome;
     private LocalDate dataNascimento;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
     public String getNome() {

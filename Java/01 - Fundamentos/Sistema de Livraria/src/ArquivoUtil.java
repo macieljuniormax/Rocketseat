@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class ArquivoUtil {
-    public static void escreverArquivo(TipoArquivo tipoArquivo, String conteudo) {
+    public static void escreverArquivo(TipoArquivo tipoArquivo, StringBuilder conteudo) {
         try {
             Path directory = Paths.get("src", "resources");
             Path filePath = directory.resolve(tipoArquivo.getNomeArquivo() + ".txt");
@@ -14,7 +14,8 @@ public class ArquivoUtil {
                 Files.createDirectories(directory);
             }
 
-            Files.write(filePath, conteudo.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND,
+            Files.write(filePath, (conteudo.toString() + System.lineSeparator()).getBytes(StandardCharsets.UTF_8),
+                    StandardOpenOption.APPEND,
                     StandardOpenOption.CREATE);
 
         } catch (Exception e) {

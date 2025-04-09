@@ -1,0 +1,6 @@
+1;A Química;Stepheny Meyer;true;2025-04-09;2024-04-09;
+1;A Química;Stepheny Meyer;true;2025-04-09;2024-04-09;
+1;A Química;Stepheny Meyer;true;2025-04-09;2024-04-09;
+1;A Química;Stepheny Meyer;true;2025-04-09;2024-04-09;
+1;A Química;Stepheny Meyer;true;2025-04-09;2024-04-09;
+1;A Química;Stepheny Meyer;true;2025-04-09;2024-04-09;

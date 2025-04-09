@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.List;
 
 public class ArquivoUtil {
     public static void escreverArquivo(TipoArquivo tipoArquivo, StringBuilder conteudo) {
@@ -21,5 +22,17 @@ public class ArquivoUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<String> lerArquivo(TipoArquivo tipoArquivo) {
+        try {
+            Path arquivoOrigem = Paths.get("src/resources/" + tipoArquivo.getNomeArquivo() + ".txt");
+            List<String> linhas = Files.readAllLines(arquivoOrigem);
+
+            return linhas;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

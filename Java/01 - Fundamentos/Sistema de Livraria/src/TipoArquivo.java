@@ -1,7 +1,6 @@
 public enum TipoArquivo {
     LIVROS("livros"),
-    CLIENTES("clientes"),
-    AUTORES("autores");
+    CLIENTES("clientes");
 
     private final String nomeArquivo;
 

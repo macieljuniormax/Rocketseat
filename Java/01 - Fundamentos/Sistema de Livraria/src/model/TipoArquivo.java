@@ -1,3 +1,5 @@
+package model;
+
 public enum TipoArquivo {
     LIVROS("livros"),
     CLIENTES("clientes");

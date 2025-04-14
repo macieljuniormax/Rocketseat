@@ -1,3 +1,5 @@
+package model;
+
 import java.time.LocalDate;
 
 public class Autor {
@@ -8,10 +10,12 @@ public class Autor {
     public int getId() {
         return id;
     }
+
     public String getNome() {
         return nome;
     }
+
     public LocalDate getDataNascimento() {
         return dataNascimento;
-    } 
+    }
 }

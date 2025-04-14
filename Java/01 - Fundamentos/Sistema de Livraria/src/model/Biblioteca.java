@@ -1,7 +1,11 @@
+package model;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+import util.ArquivoUtil;
 
 public class Biblioteca {
     private List<Livro> livros = new ArrayList<>();
@@ -21,21 +25,29 @@ public class Biblioteca {
         return emprestimos;
     }
 
-    public void adicionarLivro(int id, String titulo, String autor, boolean disponivel, LocalDate dataCadastro,
-            LocalDate dataAtualizacao) {
+    public void adicionarLivro(String titulo, String autor, boolean disponivel) {
         StringBuilder conteudo = new StringBuilder();
 
-        conteudo.append(id + ";");
+        int id = 1;
+
+        if (!this.livros.isEmpty()) {
+            Livro ultimoLivro = livros.get(livros.size() - 1);
+            id = ultimoLivro.getId() + 1;
+        }
+
+        conteudo.append(String.format("%08d", id) + ";");
         conteudo.append(titulo + ";");
         conteudo.append(autor + ";");
         conteudo.append(disponivel + ";");
-        conteudo.append(dataCadastro + ";");
-        conteudo.append(dataAtualizacao + ";");
+        conteudo.append(LocalDate.now() + ";");
 
         ArquivoUtil.escreverArquivo(TipoArquivo.LIVROS, conteudo);
+        this.carregarLivros();
     }
 
     public void carregarLivros() {
+        this.livros.clear();
+
         List<String> linhas = ArquivoUtil.lerArquivo(TipoArquivo.LIVROS);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -47,9 +59,8 @@ public class Biblioteca {
             String autor = colunas[2];
             boolean disponivel = Boolean.parseBoolean(colunas[3]);
             LocalDate dataCadastro = LocalDate.parse(colunas[4], formatter);
-            LocalDate dataAtualizacao = LocalDate.parse(colunas[5], formatter);
 
-            Livro livro = new Livro(id, titulo, autor, disponivel, dataCadastro, dataAtualizacao);
+            Livro livro = new Livro(id, titulo, autor, disponivel, dataCadastro);
             livros.add(livro);
         }
     }
@@ -65,12 +76,19 @@ public class Biblioteca {
 
     public void listarLivros() {
         for (Livro livro : this.livros) {
-            System.out.println(String.format("%d - %s, %s", livro.getId(), livro.getTitulo(), livro.getAutor()));
+            System.out.println(String.format("%08d - %s, %s", livro.getId(), livro.getTitulo(), livro.getAutor()));
         }
     }
 
-    public void adicionarCliente(int id, String nome, LocalDate dataNascimento, String email) {
+    public void adicionarCliente(String nome, LocalDate dataNascimento, String email) {
         StringBuilder conteudo = new StringBuilder();
+
+        int id = 1;
+
+        if (!this.clientes.isEmpty()) {
+            Cliente ultimoCliente = clientes.get(clientes.size() - 1);
+            id = ultimoCliente.getId() + 1;
+        }
 
         conteudo.append(id + ";");
         conteudo.append(nome + ";");
@@ -78,9 +96,12 @@ public class Biblioteca {
         conteudo.append(email + ";");
 
         ArquivoUtil.escreverArquivo(TipoArquivo.CLIENTES, conteudo);
+        this.carregarClientes();
     }
 
     public void carregarClientes() {
+        this.clientes.clear();
+
         List<String> linhas = ArquivoUtil.lerArquivo(TipoArquivo.CLIENTES);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -116,4 +137,7 @@ public class Biblioteca {
 
     }
 
+    public void devolverLivro(int idCliente, Livro livro) {
+
+    }
 }

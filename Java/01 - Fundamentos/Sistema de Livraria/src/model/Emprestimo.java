@@ -10,6 +10,16 @@ public class Emprestimo {
     private LocalDate dataDevolucao;
     private LocalDate dataDevolvida;
 
+    public Emprestimo(int id, Livro livro, Cliente cliente, LocalDate dataEmprestimo, LocalDate dataDevolucao,
+            LocalDate dataDevolvida) {
+        this.id = id;
+        this.livro = livro;
+        this.cliente = cliente;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        this.dataDevolvida = dataDevolvida;
+    }
+
     public int getId() {
         return id;
     }

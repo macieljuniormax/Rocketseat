@@ -133,8 +133,90 @@ public class Biblioteca {
         }
     }
 
-    public void emprestarLivro(int idCliente, Livro livro) {
+    public boolean emprestarLivro(int idCliente, int idLivro) {
+        Livro livro = this.buscarLivro(idLivro);
+        Cliente cliente = this.buscarCliente(idCliente);
 
+        if (livro != null && cliente != null && livro.isDisponivel()) {
+            livro.setDisponivel(false);
+            LocalDate dataEmprestimo = LocalDate.now();
+            LocalDate dataDevolucao = dataEmprestimo.plusDays(15); // 7 dias para devolução5
+            this.adicionarEmprestimo(idCliente, idLivro, dataEmprestimo, dataDevolucao);
+            System.out.println("Empréstimo realizado com sucesso!");
+            System.out.println("Data de devolução: " + dataDevolucao);
+            return true;
+        }
+
+        if (livro == null) {
+            System.out.println("Livro não encontrado.");
+        }
+
+        if (cliente == null) {
+            System.out.println("Cliente não encontrado.");
+        }
+
+        if (!livro.isDisponivel()) {
+            System.out.println("Livro não disponível.");
+        }
+
+        return false;
+    }
+
+    public void adicionarEmprestimo(int idCliente, int idLivro, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+        StringBuilder conteudo = new StringBuilder();
+
+        int id = 1;
+
+        if (!this.emprestimos.isEmpty()) {
+            Emprestimo ultimoEmprestimo = emprestimos.get(emprestimos.size() - 1);
+            id = ultimoEmprestimo.getId() + 1;
+        }
+
+        conteudo.append(id + ";");
+        conteudo.append(idLivro + ";");
+        conteudo.append(idCliente + ";");
+        conteudo.append(dataEmprestimo + ";");
+        conteudo.append(dataDevolucao + ";");
+        conteudo.append("" + ";");
+
+        ArquivoUtil.escreverArquivo(TipoArquivo.EMPRESTIMOS, conteudo);
+        this.carregarEmprestimos();
+    }
+
+    public void carregarEmprestimos() {
+        this.emprestimos.clear();
+
+        List<String> linhas = ArquivoUtil.lerArquivo(TipoArquivo.EMPRESTIMOS);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        for (String linha : linhas) {
+            String[] colunas = linha.split(";", -1);
+
+            int id = Integer.parseInt(colunas[0]);
+            Livro livro = buscarLivro(Integer.parseInt(colunas[1]));
+            Cliente cliente = buscarCliente(Integer.parseInt(colunas[2]));
+            LocalDate dataEmprestimo = LocalDate.parse(colunas[3], formatter);
+            LocalDate dataDevolucao = LocalDate.parse(colunas[4], formatter);
+            LocalDate dataDevolvida = null;
+            if (!colunas[5].isBlank()) {
+                dataDevolvida = LocalDate.parse(colunas[5], formatter);
+            }
+
+            Emprestimo emprestimo = new Emprestimo(id, livro, cliente, dataEmprestimo, dataDevolucao, dataDevolvida);
+            emprestimos.add(emprestimo);
+        }
+    }
+
+    public void listarEmprestimos() {
+        for (Emprestimo emprestimo : this.emprestimos) {
+            Cliente cliente = emprestimo.getCliente();
+            Livro livro = emprestimo.getLivro();
+            String devolucao = emprestimo.getDataDevolvida() != null ? emprestimo.getDataDevolvida().toString()
+                    : "Livro ainda não devolvido";
+            System.out.println(
+                    String.format("%08d - %s, %s, %s, %s", emprestimo.getId(), cliente.getNome(), livro.getTitulo(),
+                            emprestimo.getDataDevolucao(), devolucao));
+        }
     }
 
     public void devolverLivro(int idCliente, Livro livro) {

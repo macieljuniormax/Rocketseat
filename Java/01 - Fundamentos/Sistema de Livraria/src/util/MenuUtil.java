@@ -21,7 +21,8 @@ public class MenuUtil {
         System.out.println("2  - Cadastrar novo livro");
         System.out.println("3  - Listar clientes");
         System.out.println("4  - Cadastrar novo cliente");
-        System.out.println("5  - Emprestar livro");
+        System.out.println("5  - Listar empréstimos");
+        System.out.println("6  - Emprestar livro");
         System.out.println("0  - Sair do sistema\n");
     }
 
@@ -96,5 +97,29 @@ public class MenuUtil {
         biblioteca.adicionarCliente(nome, dataNascimento, email);
 
         System.out.println("\n✅ Cliente cadastrado com sucesso!");
+    }
+
+    public static void menuEmprestarLivro(Scanner scanner, Biblioteca biblioteca) {
+        System.out.println("╔═══════════════════════════════════╗");
+        System.out.println("║        Empréstimo de Livro        ║");
+        System.out.println("╚═══════════════════════════════════╝");
+
+        boolean sucesso = false;
+
+        while (!sucesso) {
+            System.out.print("Digite o ID do cliente: ");
+            int idCliente = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.print("Digite o ID do livro: ");
+            int idLivro = scanner.nextInt();
+            scanner.nextLine();
+
+            sucesso = biblioteca.emprestarLivro(idCliente, idLivro);
+
+            if (!sucesso) {
+                System.out.println("\n❌ O empréstimo não pôde ser realizado. Verifique os dados e tente novamente.\n");
+            }
+        }
     }
 }

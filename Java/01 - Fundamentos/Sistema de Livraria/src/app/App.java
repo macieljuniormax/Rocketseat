@@ -11,6 +11,7 @@ public class App {
         Biblioteca biblioteca = new Biblioteca();
         biblioteca.carregarLivros();
         biblioteca.carregarClientes();
+        biblioteca.carregarEmprestimos();
         MenuUtil.exibirBoasVindas();
 
         Scanner scanner = new Scanner(System.in);
@@ -36,9 +37,8 @@ public class App {
                     MenuUtil.menuVoltar(scanner);
                     break;
                 case "3":
-                    System.out.println("👥 Listando clientes...\n");
                     ConsoleUtil.clearConsole();
-                    System.out.println("📚 Listando livros...\n");
+                    System.out.println("👥 Listando clientes...\n");
                     biblioteca.listarClientes();
                     MenuUtil.menuVoltar(scanner);
                     break;
@@ -49,8 +49,15 @@ public class App {
                     MenuUtil.menuVoltar(scanner);
                     break;
                 case "5":
+                    ConsoleUtil.clearConsole();
+                    System.out.println("📦 Listando empréstimos...\n");
+                    biblioteca.listarEmprestimos();
+                    MenuUtil.menuVoltar(scanner);
+                    break;
+                case "6":
                     System.out.println("📖 Emprestando livro...\n");
-                    // chamada para emprestar livro
+                    MenuUtil.menuEmprestarLivro(scanner, biblioteca);
+                    MenuUtil.menuVoltar(scanner);
                     break;
                 case "0":
                     System.out.println("💤 Encerrando o sistema. Até logo!\n");

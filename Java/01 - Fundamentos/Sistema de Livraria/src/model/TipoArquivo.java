@@ -2,7 +2,8 @@ package model;
 
 public enum TipoArquivo {
     LIVROS("livros"),
-    CLIENTES("clientes");
+    CLIENTES("clientes"),
+    EMPRESTIMOS("emprestimos");
 
     private final String nomeArquivo;
 

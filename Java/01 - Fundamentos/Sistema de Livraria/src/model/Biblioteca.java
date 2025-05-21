@@ -137,16 +137,6 @@ public class Biblioteca {
         Livro livro = this.buscarLivro(idLivro);
         Cliente cliente = this.buscarCliente(idCliente);
 
-        if (livro != null && cliente != null && livro.isDisponivel()) {
-            livro.setDisponivel(false);
-            LocalDate dataEmprestimo = LocalDate.now();
-            LocalDate dataDevolucao = dataEmprestimo.plusDays(15); // 7 dias para devolução5
-            this.adicionarEmprestimo(idCliente, idLivro, dataEmprestimo, dataDevolucao);
-            System.out.println("Empréstimo realizado com sucesso!");
-            System.out.println("Data de devolução: " + dataDevolucao);
-            return true;
-        }
-
         if (livro == null) {
             System.out.println("Livro não encontrado.");
         }
@@ -155,8 +145,16 @@ public class Biblioteca {
             System.out.println("Cliente não encontrado.");
         }
 
-        if (!livro.isDisponivel()) {
-            System.out.println("Livro não disponível.");
+        if (livro != null && cliente != null) {
+            if (livro.isDisponivel()) {
+                livro.setDisponivel(false);
+                LocalDate dataEmprestimo = LocalDate.now();
+                LocalDate dataDevolucao = dataEmprestimo.plusDays(15);
+                this.adicionarEmprestimo(idCliente, idLivro, dataEmprestimo, dataDevolucao);
+                System.out.println("Empréstimo realizado com sucesso!");
+                System.out.println("Data de devolução: " + dataDevolucao);
+                return true;
+            }
         }
 
         return false;

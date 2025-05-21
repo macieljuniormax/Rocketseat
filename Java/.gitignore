@@ -1,0 +1,43 @@
+# Diretórios de ambiente virtual
+venv/
+.env/
+
+# Arquivos de configuração de IDEs
+.vscode/
+.idea/
+
+# Arquivos temporários e de sistema
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Arquivos de build
+dist/
+build/
+__pycache__/
+*.pyc
+*.class
+target/
+
+# Node.js
+node_modules/
+
+# Java (Maven/Gradle)
+*.jar
+*.war
+*.ear
+*.class
+*.iml
+
+# Jupyter Notebooks - checkpoints
+.ipynb_checkpoints/
+
+# Configurações locais
+*.env
+*.local
+
+# Arquivos de banco de dados locais
+*.sqlite
+*.db

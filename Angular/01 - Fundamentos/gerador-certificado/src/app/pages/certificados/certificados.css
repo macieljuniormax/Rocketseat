@@ -1,0 +1,71 @@
+.custom-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--gray-300);
+  margin: 0;
+}
+
+.custom-subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--gray-200);
+  margin: 0;
+}
+
+.content-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.custom-card {
+  max-width: 672px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-100);
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.custom-card i {
+  font-size: 48px;
+  color: var(--gray-200);
+}
+
+.custom-warning-titles {
+  gap: 2px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--blue-dark);
+}
+
+.card-subtitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--gray-200);
+}
+
+.list-certificate {
+  max-width: 672px;
+  gap: 8px;
+}

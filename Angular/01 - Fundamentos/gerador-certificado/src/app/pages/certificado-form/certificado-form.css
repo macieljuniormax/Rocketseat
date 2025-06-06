@@ -1,0 +1,126 @@
+.custom-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--gray-300);
+  margin: 0;
+}
+
+.custom-subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--gray-200);
+  margin: 0;
+}
+
+.content-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.custom-card {
+  max-width: 672px;
+  gap: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-100);
+  padding: 32px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0;
+  color: var(--blue-dark);
+  gap: 20px;
+}
+
+.atividade-group {
+  margin-bottom: 12px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--blue-dark);
+}
+
+.item-list {
+  width: 100%;
+  border: 1px solid var(--gray-100);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-list hr {
+  all: unset;
+  height: 1px;
+  background-color: var(--gray-100);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.item i {
+  font-size: 20px;
+  color: var(--danger-base);
+  padding: 2px;
+}
+
+.item i:hover {
+  background-color: var(--gray-100);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-input {
+  border: 1px solid var(--gray-100);
+  border-radius: 6px;
+  padding: 8px 12px;
+  height: 40px;
+}
+
+.custom-input:focus {
+  border: 1px solid var(--blue-base);
+  box-shadow: none;
+}
+
+.custom-input-group:has(.custom-input:focus) label {
+  color: var(--blue-base);
+}
+
+.error-message {
+  gap: 4px;
+  color: var(--danger-base);
+  margin-top: 8px;
+}
+
+.error-message p {
+  all: unset;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.custom-input-group:has(.error-message) label {
+  color: var(--danger-base);
+}

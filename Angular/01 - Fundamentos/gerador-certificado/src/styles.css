@@ -1,12 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --white: #FFFFFF;
-  --gray-100: #E2E8F0;
-  --gray-200: #64748B;
+  --white: #ffffff;
+  --gray-100: #e2e8f0;
+  --gray-200: #64748b;
   --gray-300: #121621;
-  --blue-base: #3B5AC2;
-  --blue-dark: #1A2856;
-  --blue-gradient: linear-gradient(90deg, #1A2856 0%, #334EA9 100%);
-  --danger-base: #E95F5F;
-  --danger-dark: #D71D1D;
+  --blue-base: #3b5ac2;
+  --blue-dark: #1a2856;
+  --blue-gradient: linear-gradient(90deg, #1a2856 0%, #334ea9 100%);
+  --danger-base: #e95f5f;
+  --danger-dark: #d71d1d;
+}
+
+body {
+  font-family: "Inter", sans-serif !important;
+  font-optical-sizing: auto !important;
 }

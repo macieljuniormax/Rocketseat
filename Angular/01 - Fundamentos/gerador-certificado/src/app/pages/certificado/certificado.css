@@ -8,6 +8,7 @@
   gap: 6px;
   color: var(--gray-200);
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .btn-voltar p {

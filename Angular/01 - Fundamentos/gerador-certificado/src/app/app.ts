@@ -8,10 +8,11 @@ import { BaseUi } from "./components/base-ui/base-ui";
 import { Certificados } from "./pages/certificados/certificados";
 import { CertificadoForm } from "./pages/certificado-form/certificado-form";
 import { Certificado } from "./pages/certificado/certificado";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, CommonModule, BaseUi, CertificadoForm, Certificado],
+  imports: [CommonModule, RouterOutlet, Navbar, BaseUi],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

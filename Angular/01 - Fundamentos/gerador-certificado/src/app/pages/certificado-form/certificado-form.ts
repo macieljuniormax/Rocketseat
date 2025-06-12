@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class CertificadoForm {
   private _nome: string = '';
   private _atividade: string = '';
-  private _atividades: Array<string> = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
+  private _atividades: Array<string> = [];
 
   // Getters and Setters
   public get nome(): string { return this._nome; }
@@ -29,5 +29,14 @@ export class CertificadoForm {
 
   public formValido(): boolean {
     return (this.atividades.length > 0 && this.nome.length > 0);
+  }
+
+  adicionarAtividade() {
+    this.atividades.push(this.atividade);
+    this.atividade = '';
+  }
+
+  excluirAtividade(index: number) {
+    this.atividades.splice(index, 1);
   }
 }

@@ -14,7 +14,7 @@ import { ICertificado } from '../../interfaces/certificado';
 })
 export class CertificadoForm {
   private _atividade: string = '';
-  private _certificado: ICertificado = { nome: '', atividades: [] };
+  private _certificado: ICertificado = { nome: '', atividades: [], dataEmissao: '' };
 
   // Getters and Setters
   public get atividade(): string { return this._atividade; }
@@ -39,11 +39,22 @@ export class CertificadoForm {
     this.certificado.atividades.splice(index, 1);
   }
 
-  public submit() {
+  public submit(): void {
     if (!this.formValido()) {
       return;
     }
 
-    console.log('Certificado:', this.certificado);
+    this.certificado.dataEmissao = this.dataAtual();
+    console.log(this.certificado)
+  }
+
+  private dataAtual(): string {
+    const data = new Date();
+    const dia = String(data.getDate()).padStart(2, '0');
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
+    const ano = data.getFullYear();
+    const dataFormatada = `${dia}/${mes}/${ano}`;
+
+    return dataFormatada;
   }
 }

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { PrimaryButton } from "../../components/primary-button/primary-button";
 import { SecondaryButton } from "../../components/secondary-button/secondary-button";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-certificado-form',
-  imports: [FormsModule, PrimaryButton, SecondaryButton],
+  imports: [CommonModule, FormsModule, PrimaryButton, SecondaryButton],
   templateUrl: './certificado-form.html',
   styleUrl: './certificado-form.css'
 })
@@ -21,4 +22,8 @@ export class CertificadoForm {
   public set atividade(value: string) { this._atividade = value; }
   public get atividades(): Array<string> { return this._atividades; }
   public set atividades(value: Array<string>) { this._atividades = value; }
+
+  public campoInvalido(control: NgModel): boolean {
+    return !!(control.invalid && (control.dirty || control.touched));
+  }
 }

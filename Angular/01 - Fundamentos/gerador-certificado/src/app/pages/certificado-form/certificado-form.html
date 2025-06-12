@@ -10,7 +10,12 @@
   <div class="custom-card w-100 d-flex flex-column">
     <h2 class="card-title">Novo certificado</h2>
     <div class="custom-input-group">
-      <label for="nome" class="form-label">Nome</label>
+      <label
+        [ngClass]="{ 'text-danger-label': campoInvalido(nomeRef)}"
+        for="nome"
+        class="form-label"
+        >Nome</label
+      >
       <input
         [(ngModel)]="nome"
         name="nome"
@@ -21,21 +26,21 @@
         placeholder="Nome do aluno"
         required
       />
-      @if (nomeRef.invalid ) {} @if (nomeRef.errors?.['required']) {
+      @if (campoInvalido(nomeRef)) {
       <div class="error-message d-flex align-items-center">
         <i class="ph ph-warning-circle"></i>
-        <p>O nome do aluno é obrigatório</p>
-      </div>
-      } @if (nomeRef.errors?.['maxlength']) {
-      <div class="error-message d-flex align-items-center">
-        <i class="ph ph-warning-circle"></i>
-        <p>O nome do aluno deve ter, no máximo, 50 caracteres</p>
+        <p>O nome do aluno é obrigatório.</p>
       </div>
       }
     </div>
     <div class="d-flex align-items-end custom-input-group">
       <div class="flex-grow-1 me-2">
-        <label for="atividade" class="form-label">Atividade</label>
+        <label
+          [ngClass]="{ 'text-danger-label': campoInvalido(atividadeRef) }"
+          for="atividade"
+          class="form-label"
+          >Atividade</label
+        >
         <input
           [(ngModel)]="atividade"
           name="atividade"
@@ -46,8 +51,16 @@
           placeholder="Atividade exercida"
           required
         />
+        @if (campoInvalido(atividadeRef)) {
+        <div class="error-message d-flex align-items-center">
+          <i class="ph ph-warning-circle"></i>
+          <p>O nome da atividade é obrigatório.</p>
+        </div>
+        }
       </div>
-      <app-secondary-button></app-secondary-button>
+      <app-secondary-button
+        [ngStyle]="campoInvalido(atividadeRef) ? { 'margin-bottom' : '24px' } : {}"
+      ></app-secondary-button>
     </div>
     <div class="atividade-group">
       <label for="" class="form-label">Lista de Atividades</label>

@@ -3,6 +3,8 @@ import { PrimaryButton } from "../../components/primary-button/primary-button";
 import { SecondaryButton } from "../../components/secondary-button/secondary-button";
 import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Certificado } from '../certificado/certificado';
+import { ICertificado } from '../../interfaces/certificado';
 
 @Component({
   selector: 'app-certificado-form',
@@ -11,32 +13,37 @@ import { CommonModule } from '@angular/common';
   styleUrl: './certificado-form.css'
 })
 export class CertificadoForm {
-  private _nome: string = '';
   private _atividade: string = '';
-  private _atividades: Array<string> = [];
+  private _certificado: ICertificado = { nome: '', atividades: [] };
 
   // Getters and Setters
-  public get nome(): string { return this._nome; }
-  public set nome(value: string) { this._nome = value; }
   public get atividade(): string { return this._atividade; }
   public set atividade(value: string) { this._atividade = value; }
-  public get atividades(): Array<string> { return this._atividades; }
-  public set atividades(value: Array<string>) { this._atividades = value; }
+  public get certificado(): ICertificado { return this._certificado; }
+  public set certificado(value: ICertificado) { this._certificado = value; }
 
   public campoInvalido(control: NgModel): boolean {
     return !!(control.invalid && (control.dirty || control.touched));
   }
 
   public formValido(): boolean {
-    return (this.atividades.length > 0 && this.nome.length > 0);
+    return (this.certificado.atividades.length > 0 && this.certificado.nome.length > 0);
   }
 
-  adicionarAtividade() {
-    this.atividades.push(this.atividade);
+  public adicionarAtividade(): void {
+    this.certificado.atividades.push(this.atividade);
     this.atividade = '';
   }
 
-  excluirAtividade(index: number) {
-    this.atividades.splice(index, 1);
+  public excluirAtividade(index: number): void {
+    this.certificado.atividades.splice(index, 1);
+  }
+
+  public submit() {
+    if (!this.formValido()) {
+      return;
+    }
+
+    console.log('Certificado:', this.certificado);
   }
 }

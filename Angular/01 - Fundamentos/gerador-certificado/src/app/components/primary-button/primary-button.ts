@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-primary-button',
@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './primary-button.css'
 })
 export class PrimaryButton {
+  private _textButtom: string = '';
 
+
+  // Getters and Setters
+  @Input()
+  public set textButtom(value: string) { this._textButtom = value; }
+  public get textButtom(): string { return this._textButtom; }
 }

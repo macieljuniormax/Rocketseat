@@ -3,8 +3,9 @@ import { PrimaryButton } from "../../components/primary-button/primary-button";
 import { SecondaryButton } from "../../components/secondary-button/secondary-button";
 import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Certificado } from '../certificado/certificado';
 import { ICertificado } from '../../interfaces/certificado';
+import { CertificadoService } from '../../services/certificado.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-certificado-form',
@@ -13,8 +14,10 @@ import { ICertificado } from '../../interfaces/certificado';
   styleUrl: './certificado-form.css'
 })
 export class CertificadoForm {
+  constructor(private certificadoService: CertificadoService) { }
+
   private _atividade: string = '';
-  private _certificado: ICertificado = { nome: '', atividades: [], dataEmissao: '' };
+  private _certificado: ICertificado = { id: '', nome: '', atividades: [], dataEmissao: '' };
 
   // Getters and Setters
   public get atividade(): string { return this._atividade; }
@@ -44,8 +47,9 @@ export class CertificadoForm {
       return;
     }
 
+    this.certificado.id = uuid();
     this.certificado.dataEmissao = this.dataAtual();
-    console.log(this.certificado)
+    this.certificadoService.adicionarCertificado(this.certificado)
   }
 
   private dataAtual(): string {

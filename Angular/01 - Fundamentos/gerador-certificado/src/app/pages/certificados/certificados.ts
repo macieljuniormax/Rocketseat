@@ -20,6 +20,4 @@ export class Certificados implements OnInit {
     this._certificados = this.certificadoService.certificados;
     console.log(this._certificados);
   }
-
-
 }

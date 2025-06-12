@@ -30,7 +30,8 @@
         }
       </div>
       <app-secondary-button [ngStyle]="campoInvalido(atividadeRef) ? { 'margin-bottom' : '24px' } : {}"
-        textButton="Adicionar" phClass="ph ph-plus" [disabled]="atividade.length === 0" (click)="adicionarAtividade()">
+        textButton="Adicionar" phClass="ph ph-plus" [disabled]="!atividade || atividade.length === 0"
+        (click)="adicionarAtividade()">
       </app-secondary-button>
     </div>
     <div class="atividade-group">

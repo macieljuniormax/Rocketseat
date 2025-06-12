@@ -9,9 +9,10 @@ export class CertificadoService {
 
   // Getters and Setters
   public get certificados(): ICertificado[] { return this._certificados; }
+  public set certificados(value: ICertificado[]) { this._certificados = value; }
 
   public adicionarCertificado(certificado: ICertificado): void {
-    this._certificados.push({ ...certificado });
-    console.log(this.certificados);
+    this.certificados.push({ ...certificado });
+    localStorage.setItem('certificados', JSON.stringify(this._certificados));
   }
 }

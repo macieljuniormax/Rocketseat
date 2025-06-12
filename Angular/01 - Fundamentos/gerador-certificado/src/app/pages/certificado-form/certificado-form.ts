@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PrimaryButton } from "../../components/primary-button/primary-button";
 import { SecondaryButton } from "../../components/secondary-button/secondary-button";
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ICertificado } from '../../interfaces/certificado';
 import { CertificadoService } from '../../services/certificado.service';
@@ -24,6 +24,8 @@ export class CertificadoForm {
   public set atividade(value: string) { this._atividade = value; }
   public get certificado(): ICertificado { return this._certificado; }
   public set certificado(value: ICertificado) { this._certificado = value; }
+
+  @ViewChild('form') private readonly _form!: NgForm;
 
   public campoInvalido(control: NgModel): boolean {
     return !!(control.invalid && (control.dirty || control.touched));
@@ -50,6 +52,8 @@ export class CertificadoForm {
     this.certificado.id = uuid();
     this.certificado.dataEmissao = this.dataAtual();
     this.certificadoService.adicionarCertificado(this.certificado)
+    this.limparCampos();
+    this._form.resetForm();
   }
 
   private dataAtual(): string {
@@ -60,5 +64,9 @@ export class CertificadoForm {
     const dataFormatada = `${dia}/${mes}/${ano}`;
 
     return dataFormatada;
+  }
+
+  private limparCampos(): void {
+    this.certificado = { id: '', nome: '', atividades: [], dataEmissao: '' };
   }
 }

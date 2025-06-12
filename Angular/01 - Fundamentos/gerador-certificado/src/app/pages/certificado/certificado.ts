@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SecondaryButton } from "../../components/secondary-button/secondary-button";
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CertificadoService } from '../../services/certificado.service';
+import { ICertificado } from '../../interfaces/certificado';
 
 @Component({
   selector: 'app-certificado',
@@ -10,9 +11,19 @@ import { CertificadoService } from '../../services/certificado.service';
   styleUrl: './certificado.css'
 })
 export class Certificado implements OnInit {
-  constructor(private certificadoService: CertificadoService) { }
+  constructor(
+    private certificadoService: CertificadoService,
+    private route: ActivatedRoute
+  ) { }
+
+  private _id: string | null = null;
+  private _certificado: ICertificado | undefined = undefined;
 
   ngOnInit(): void {
-    console.log(this.certificadoService.certificados);
+    this.route.paramMap.subscribe(params => {
+      this._id = params.get('id');
+      this._certificado = this.certificadoService.certificados.find(item => item.id === this._id);
+      console.log(this._certificado);
+    })
   }
 }

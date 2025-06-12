@@ -36,8 +36,10 @@ export class CertificadoForm {
   }
 
   public adicionarAtividade(): void {
-    this.certificado.atividades.push(this.atividade);
-    this.atividade = '';
+    if (this.atividade.length > 0) {
+      this.certificado.atividades.push(this.atividade);
+      this.atividade = '';
+    }
   }
 
   public excluirAtividade(index: number): void {

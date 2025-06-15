@@ -18,7 +18,7 @@ class SplashViewController: UIViewController {
     }
     
     private func setup() -> Void {
-        self.view.addSubview(contentView)
+        self.view.addSubview(self.contentView)
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = Colors.red_primary
         

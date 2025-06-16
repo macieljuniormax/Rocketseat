@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class LoginBottomSheetView: UIView {
+    public weak var delegate: LoginBottomSheetViewDelegate?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "login.lable.title".localized
@@ -71,6 +73,7 @@ class LoginBottomSheetView: UIView {
 //        button.tintColor = Colors.gray_100
         button.backgroundColor = Colors.red_primary
         button.layer.cornerRadius = Metrics.large
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -79,8 +82,8 @@ class LoginBottomSheetView: UIView {
         super.init(frame: frame)
         setupUI()
         
-        let exampleGesture = UITapGestureRecognizer(target: self, action: #selector(exampleTaped))
-        self.titleLabel.addGestureRecognizer(exampleGesture)
+        self.loginButton.addTarget(self, action: #selector(loginButtonDidTapped), for: UIControl.Event.touchUpInside)
+        self.titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(exampleTaped)))
     }
     
     required init?(coder: NSCoder) {
@@ -138,5 +141,11 @@ class LoginBottomSheetView: UIView {
             self.loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Metrics.huge),
             self.loginButton.heightAnchor.constraint(equalToConstant: Metrics.buttomSize)
         ])
+    }
+    
+    @objc private func loginButtonDidTapped() {
+        let username = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        delegate?.sendLoginData(user: username, password: password)
     }
 }

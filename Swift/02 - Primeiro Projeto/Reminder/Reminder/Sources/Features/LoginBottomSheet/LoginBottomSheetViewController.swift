@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class LoginBottomSheetViewController: UIViewController {
+    var mainNavigation: UINavigationController?
     let loginView = LoginBottomSheetView()
     let viewModel = LoginBottomSheetViewModel()
     var handleAreaHeigh: CGFloat = 50.0
@@ -19,6 +20,7 @@ class LoginBottomSheetViewController: UIViewController {
         self.loginView.delegate = self
         self.setupUI()
         self.setupGesture()
+        self.bindViewModel()
     }
     
     private func setupUI() -> Void {
@@ -45,6 +47,15 @@ class LoginBottomSheetViewController: UIViewController {
     
     private func handlePanGesture() -> Void {
         
+    }
+    
+    private func bindViewModel() -> Void {
+        self.viewModel.succesResult = { [weak self] in
+            let viewController = UIViewController()
+            viewController.view.backgroundColor = .red
+            self?.dismiss(animated: false)
+            self?.mainNavigation?.pushViewController(viewController, animated: true)
+        }
     }
     
     func animateShow(completion: (() -> Void)? = nil) -> Void {

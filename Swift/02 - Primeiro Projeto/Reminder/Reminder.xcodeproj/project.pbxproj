@@ -7,75 +7,75 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		56ACD02B2DFF2B320009118A /* PBXContainerItemProxy */ = {
+		567D796F2E00A005008AD49F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 56ACD00C2DFF2B300009118A /* Project object */;
+			containerPortal = 567D79502E00A003008AD49F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 56ACD0132DFF2B300009118A;
-			remoteInfo = "02 - Reminder";
+			remoteGlobalIDString = 567D79572E00A003008AD49F;
+			remoteInfo = Reminder;
 		};
-		56ACD0352DFF2B320009118A /* PBXContainerItemProxy */ = {
+		567D79792E00A005008AD49F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 56ACD00C2DFF2B300009118A /* Project object */;
+			containerPortal = 567D79502E00A003008AD49F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 56ACD0132DFF2B300009118A;
-			remoteInfo = "02 - Reminder";
+			remoteGlobalIDString = 567D79572E00A003008AD49F;
+			remoteInfo = Reminder;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		56ACD0142DFF2B300009118A /* 02 - Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "02 - Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		56ACD02A2DFF2B320009118A /* 02 - ReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "02 - ReminderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		56ACD0342DFF2B320009118A /* 02 - ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "02 - ReminderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		567D79582E00A003008AD49F /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		567D796E2E00A005008AD49F /* ReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		567D79782E00A005008AD49F /* ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReminderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		56ACD03C2DFF2B320009118A /* Exceptions for "02 - Reminder" folder in "02 - Reminder" target */ = {
+		567D79802E00A005008AD49F /* Exceptions for "Reminder" folder in "Reminder" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 56ACD0132DFF2B300009118A /* 02 - Reminder */;
+			target = 567D79572E00A003008AD49F /* Reminder */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		56ACD0162DFF2B300009118A /* 02 - Reminder */ = {
+		567D795A2E00A003008AD49F /* Reminder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				56ACD03C2DFF2B320009118A /* Exceptions for "02 - Reminder" folder in "02 - Reminder" target */,
+				567D79802E00A005008AD49F /* Exceptions for "Reminder" folder in "Reminder" target */,
 			);
-			path = "02 - Reminder";
+			path = Reminder;
 			sourceTree = "<group>";
 		};
-		56ACD02D2DFF2B320009118A /* 02 - ReminderTests */ = {
+		567D79712E00A005008AD49F /* ReminderTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "02 - ReminderTests";
+			path = ReminderTests;
 			sourceTree = "<group>";
 		};
-		56ACD0372DFF2B320009118A /* 02 - ReminderUITests */ = {
+		567D797B2E00A005008AD49F /* ReminderUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "02 - ReminderUITests";
+			path = ReminderUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		56ACD0112DFF2B300009118A /* Frameworks */ = {
+		567D79552E00A003008AD49F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56ACD0272DFF2B320009118A /* Frameworks */ = {
+		567D796B2E00A005008AD49F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56ACD0312DFF2B320009118A /* Frameworks */ = {
+		567D79752E00A005008AD49F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,22 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56ACD00B2DFF2B300009118A = {
+		567D794F2E00A003008AD49F = {
 			isa = PBXGroup;
 			children = (
-				56ACD0162DFF2B300009118A /* 02 - Reminder */,
-				56ACD02D2DFF2B320009118A /* 02 - ReminderTests */,
-				56ACD0372DFF2B320009118A /* 02 - ReminderUITests */,
-				56ACD0152DFF2B300009118A /* Products */,
+				567D795A2E00A003008AD49F /* Reminder */,
+				567D79712E00A005008AD49F /* ReminderTests */,
+				567D797B2E00A005008AD49F /* ReminderUITests */,
+				567D79592E00A003008AD49F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		56ACD0152DFF2B300009118A /* Products */ = {
+		567D79592E00A003008AD49F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56ACD0142DFF2B300009118A /* 02 - Reminder.app */,
-				56ACD02A2DFF2B320009118A /* 02 - ReminderTests.xctest */,
-				56ACD0342DFF2B320009118A /* 02 - ReminderUITests.xctest */,
+				567D79582E00A003008AD49F /* Reminder.app */,
+				567D796E2E00A005008AD49F /* ReminderTests.xctest */,
+				567D79782E00A005008AD49F /* ReminderUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,134 +108,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		56ACD0132DFF2B300009118A /* 02 - Reminder */ = {
+		567D79572E00A003008AD49F /* Reminder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56ACD03D2DFF2B320009118A /* Build configuration list for PBXNativeTarget "02 - Reminder" */;
+			buildConfigurationList = 567D79812E00A005008AD49F /* Build configuration list for PBXNativeTarget "Reminder" */;
 			buildPhases = (
-				56ACD0102DFF2B300009118A /* Sources */,
-				56ACD0112DFF2B300009118A /* Frameworks */,
-				56ACD0122DFF2B300009118A /* Resources */,
+				567D79542E00A003008AD49F /* Sources */,
+				567D79552E00A003008AD49F /* Frameworks */,
+				567D79562E00A003008AD49F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				56ACD0162DFF2B300009118A /* 02 - Reminder */,
+				567D795A2E00A003008AD49F /* Reminder */,
 			);
-			name = "02 - Reminder";
+			name = Reminder;
 			packageProductDependencies = (
 			);
-			productName = "02 - Reminder";
-			productReference = 56ACD0142DFF2B300009118A /* 02 - Reminder.app */;
+			productName = Reminder;
+			productReference = 567D79582E00A003008AD49F /* Reminder.app */;
 			productType = "com.apple.product-type.application";
 		};
-		56ACD0292DFF2B320009118A /* 02 - ReminderTests */ = {
+		567D796D2E00A005008AD49F /* ReminderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56ACD0422DFF2B320009118A /* Build configuration list for PBXNativeTarget "02 - ReminderTests" */;
+			buildConfigurationList = 567D79862E00A005008AD49F /* Build configuration list for PBXNativeTarget "ReminderTests" */;
 			buildPhases = (
-				56ACD0262DFF2B320009118A /* Sources */,
-				56ACD0272DFF2B320009118A /* Frameworks */,
-				56ACD0282DFF2B320009118A /* Resources */,
+				567D796A2E00A005008AD49F /* Sources */,
+				567D796B2E00A005008AD49F /* Frameworks */,
+				567D796C2E00A005008AD49F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				56ACD02C2DFF2B320009118A /* PBXTargetDependency */,
+				567D79702E00A005008AD49F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				56ACD02D2DFF2B320009118A /* 02 - ReminderTests */,
+				567D79712E00A005008AD49F /* ReminderTests */,
 			);
-			name = "02 - ReminderTests";
+			name = ReminderTests;
 			packageProductDependencies = (
 			);
-			productName = "02 - ReminderTests";
-			productReference = 56ACD02A2DFF2B320009118A /* 02 - ReminderTests.xctest */;
+			productName = ReminderTests;
+			productReference = 567D796E2E00A005008AD49F /* ReminderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		56ACD0332DFF2B320009118A /* 02 - ReminderUITests */ = {
+		567D79772E00A005008AD49F /* ReminderUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56ACD0452DFF2B320009118A /* Build configuration list for PBXNativeTarget "02 - ReminderUITests" */;
+			buildConfigurationList = 567D79892E00A005008AD49F /* Build configuration list for PBXNativeTarget "ReminderUITests" */;
 			buildPhases = (
-				56ACD0302DFF2B320009118A /* Sources */,
-				56ACD0312DFF2B320009118A /* Frameworks */,
-				56ACD0322DFF2B320009118A /* Resources */,
+				567D79742E00A005008AD49F /* Sources */,
+				567D79752E00A005008AD49F /* Frameworks */,
+				567D79762E00A005008AD49F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				56ACD0362DFF2B320009118A /* PBXTargetDependency */,
+				567D797A2E00A005008AD49F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				56ACD0372DFF2B320009118A /* 02 - ReminderUITests */,
+				567D797B2E00A005008AD49F /* ReminderUITests */,
 			);
-			name = "02 - ReminderUITests";
+			name = ReminderUITests;
 			packageProductDependencies = (
 			);
-			productName = "02 - ReminderUITests";
-			productReference = 56ACD0342DFF2B320009118A /* 02 - ReminderUITests.xctest */;
+			productName = ReminderUITests;
+			productReference = 567D79782E00A005008AD49F /* ReminderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		56ACD00C2DFF2B300009118A /* Project object */ = {
+		567D79502E00A003008AD49F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					56ACD0132DFF2B300009118A = {
+					567D79572E00A003008AD49F = {
 						CreatedOnToolsVersion = 16.4;
 					};
-					56ACD0292DFF2B320009118A = {
+					567D796D2E00A005008AD49F = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 56ACD0132DFF2B300009118A;
+						TestTargetID = 567D79572E00A003008AD49F;
 					};
-					56ACD0332DFF2B320009118A = {
+					567D79772E00A005008AD49F = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 56ACD0132DFF2B300009118A;
+						TestTargetID = 567D79572E00A003008AD49F;
 					};
 				};
 			};
-			buildConfigurationList = 56ACD00F2DFF2B300009118A /* Build configuration list for PBXProject "02 - Reminder" */;
+			buildConfigurationList = 567D79532E00A003008AD49F /* Build configuration list for PBXProject "Reminder" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 56ACD00B2DFF2B300009118A;
+			mainGroup = 567D794F2E00A003008AD49F;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 56ACD0152DFF2B300009118A /* Products */;
+			productRefGroup = 567D79592E00A003008AD49F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56ACD0132DFF2B300009118A /* 02 - Reminder */,
-				56ACD0292DFF2B320009118A /* 02 - ReminderTests */,
-				56ACD0332DFF2B320009118A /* 02 - ReminderUITests */,
+				567D79572E00A003008AD49F /* Reminder */,
+				567D796D2E00A005008AD49F /* ReminderTests */,
+				567D79772E00A005008AD49F /* ReminderUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		56ACD0122DFF2B300009118A /* Resources */ = {
+		567D79562E00A003008AD49F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56ACD0282DFF2B320009118A /* Resources */ = {
+		567D796C2E00A005008AD49F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56ACD0322DFF2B320009118A /* Resources */ = {
+		567D79762E00A005008AD49F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -245,21 +245,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		56ACD0102DFF2B300009118A /* Sources */ = {
+		567D79542E00A003008AD49F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56ACD0262DFF2B320009118A /* Sources */ = {
+		567D796A2E00A005008AD49F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		56ACD0302DFF2B320009118A /* Sources */ = {
+		567D79742E00A005008AD49F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,20 +269,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		56ACD02C2DFF2B320009118A /* PBXTargetDependency */ = {
+		567D79702E00A005008AD49F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56ACD0132DFF2B300009118A /* 02 - Reminder */;
-			targetProxy = 56ACD02B2DFF2B320009118A /* PBXContainerItemProxy */;
+			target = 567D79572E00A003008AD49F /* Reminder */;
+			targetProxy = 567D796F2E00A005008AD49F /* PBXContainerItemProxy */;
 		};
-		56ACD0362DFF2B320009118A /* PBXTargetDependency */ = {
+		567D797A2E00A005008AD49F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56ACD0132DFF2B300009118A /* 02 - Reminder */;
-			targetProxy = 56ACD0352DFF2B320009118A /* PBXContainerItemProxy */;
+			target = 567D79572E00A003008AD49F /* Reminder */;
+			targetProxy = 567D79792E00A005008AD49F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		56ACD03E2DFF2B320009118A /* Debug */ = {
+		567D79822E00A005008AD49F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -291,7 +291,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FH46YBZ24B;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "02 - Reminder/Info.plist";
+				INFOPLIST_FILE = Reminder/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = SplashViewController;
@@ -302,7 +302,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maciel.-2---Reminder";
+				PRODUCT_BUNDLE_IDENTIFIER = Maciel.Reminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -310,7 +310,7 @@
 			};
 			name = Debug;
 		};
-		56ACD03F2DFF2B320009118A /* Release */ = {
+		567D79832E00A005008AD49F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -319,7 +319,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FH46YBZ24B;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "02 - Reminder/Info.plist";
+				INFOPLIST_FILE = Reminder/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = SplashViewController;
@@ -330,7 +330,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maciel.-2---Reminder";
+				PRODUCT_BUNDLE_IDENTIFIER = Maciel.Reminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -338,7 +338,7 @@
 			};
 			name = Release;
 		};
-		56ACD0402DFF2B320009118A /* Debug */ = {
+		567D79842E00A005008AD49F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -402,7 +402,7 @@
 			};
 			name = Debug;
 		};
-		56ACD0412DFF2B320009118A /* Release */ = {
+		567D79852E00A005008AD49F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -459,7 +459,7 @@
 			};
 			name = Release;
 		};
-		56ACD0432DFF2B320009118A /* Debug */ = {
+		567D79872E00A005008AD49F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -469,16 +469,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maciel.-2---ReminderTests";
+				PRODUCT_BUNDLE_IDENTIFIER = Maciel.ReminderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/02 - Reminder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/02 - Reminder";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reminder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Reminder";
 			};
 			name = Debug;
 		};
-		56ACD0442DFF2B320009118A /* Release */ = {
+		567D79882E00A005008AD49F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -488,16 +488,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maciel.-2---ReminderTests";
+				PRODUCT_BUNDLE_IDENTIFIER = Maciel.ReminderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/02 - Reminder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/02 - Reminder";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reminder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Reminder";
 			};
 			name = Release;
 		};
-		56ACD0462DFF2B320009118A /* Debug */ = {
+		567D798A2E00A005008AD49F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -505,16 +505,16 @@
 				DEVELOPMENT_TEAM = FH46YBZ24B;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maciel.-2---ReminderUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = Maciel.ReminderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "02 - Reminder";
+				TEST_TARGET_NAME = Reminder;
 			};
 			name = Debug;
 		};
-		56ACD0472DFF2B320009118A /* Release */ = {
+		567D798B2E00A005008AD49F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -522,55 +522,55 @@
 				DEVELOPMENT_TEAM = FH46YBZ24B;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Maciel.-2---ReminderUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = Maciel.ReminderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "02 - Reminder";
+				TEST_TARGET_NAME = Reminder;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56ACD00F2DFF2B300009118A /* Build configuration list for PBXProject "02 - Reminder" */ = {
+		567D79532E00A003008AD49F /* Build configuration list for PBXProject "Reminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				56ACD0402DFF2B320009118A /* Debug */,
-				56ACD0412DFF2B320009118A /* Release */,
+				567D79842E00A005008AD49F /* Debug */,
+				567D79852E00A005008AD49F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56ACD03D2DFF2B320009118A /* Build configuration list for PBXNativeTarget "02 - Reminder" */ = {
+		567D79812E00A005008AD49F /* Build configuration list for PBXNativeTarget "Reminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				56ACD03E2DFF2B320009118A /* Debug */,
-				56ACD03F2DFF2B320009118A /* Release */,
+				567D79822E00A005008AD49F /* Debug */,
+				567D79832E00A005008AD49F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56ACD0422DFF2B320009118A /* Build configuration list for PBXNativeTarget "02 - ReminderTests" */ = {
+		567D79862E00A005008AD49F /* Build configuration list for PBXNativeTarget "ReminderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				56ACD0432DFF2B320009118A /* Debug */,
-				56ACD0442DFF2B320009118A /* Release */,
+				567D79872E00A005008AD49F /* Debug */,
+				567D79882E00A005008AD49F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56ACD0452DFF2B320009118A /* Build configuration list for PBXNativeTarget "02 - ReminderUITests" */ = {
+		567D79892E00A005008AD49F /* Build configuration list for PBXNativeTarget "ReminderUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				56ACD0462DFF2B320009118A /* Debug */,
-				56ACD0472DFF2B320009118A /* Release */,
+				567D798A2E00A005008AD49F /* Debug */,
+				567D798B2E00A005008AD49F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 56ACD00C2DFF2B300009118A /* Project object */;
+	rootObject = 567D79502E00A003008AD49F /* Project object */;
 }

@@ -1,8 +1,13 @@
-//___FILEHEADER___
+//
+//  ReminderUITestsLaunchTests.swift
+//  ReminderUITests
+//
+//  Created by Maciel Ferreira Custódio Júnior on 16/06/25.
+//
 
 import XCTest
 
-final class ___FILEBASENAMEASIDENTIFIER___: XCTestCase {
+final class ReminderUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

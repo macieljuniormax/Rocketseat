@@ -1,8 +1,13 @@
-//___FILEHEADER___
+//
+//  ReminderUITests.swift
+//  ReminderUITests
+//
+//  Created by Maciel Ferreira Custódio Júnior on 16/06/25.
+//
 
 import XCTest
 
-final class ___FILEBASENAMEASIDENTIFIER___: XCTestCase {
+final class ReminderUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

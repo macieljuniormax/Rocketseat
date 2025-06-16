@@ -1,9 +1,14 @@
-//___FILEHEADER___
+//
+//  ReminderTests.swift
+//  ReminderTests
+//
+//  Created by Maciel Ferreira Custódio Júnior on 16/06/25.
+//
 
 import Testing
-@testable import ___VARIABLE_productName:identifier___
+@testable import Reminder
 
-struct ___FILEBASENAME:identifier___ {
+struct ReminderTests {
 
     @Test func example() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.

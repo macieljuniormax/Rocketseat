@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  02 - Reminder
+//  Reminder
 //
-//  Created by Maciel Ferreira Custódio Júnior on 15/06/25.
+//  Created by Maciel Ferreira Custódio Júnior on 16/06/25.
 //
 
 import UIKit

@@ -38,6 +38,4 @@ class SplashView: UIView {
             logoImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
     }
-    
-
 }

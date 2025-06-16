@@ -22,17 +22,32 @@ class SplashViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = Colors.red_primary
         
-        setUpConstraints()
+        self.setupConstraints()
+        self.setupGestures()
     }
     
-    private func setUpConstraints() -> Void {
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: view.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
+    private func setupConstraints() -> Void {
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.contentView.topAnchor.constraint(equalTo: view.topAnchor),
+            self.contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            self.contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            self.contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+    
+    private func setupGestures() -> Void {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.showLoginBottomSheet))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func showLoginBottomSheet() -> Void {
+        let loginBottomSheet = LoginBottomSheetViewController()
+        loginBottomSheet.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        loginBottomSheet.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(loginBottomSheet, animated: false) {
+            loginBottomSheet.animateShow()
+        }
     }
 }

@@ -9,16 +9,16 @@ import Foundation
 import Firebase
 
 class LoginViewModel {
-    var succesResult: ((String) -> Void)?
+    var onLoginSucess: ((String) -> Void)?
+    var onLoginError: ((String) -> Void)?
     
     func doAuthentication(username: String, password: String) {
-        print(username)
         Firebase.Auth.auth().signIn(withEmail: username, password: password) { [weak self] authDataResult, error in
             if let error = error {
-                print("Autenticação não foi realizada com sucesso \(error)")
+                self?.onLoginError?("Erro ao autenticar, verifique as credenciais digitadas.")
                 
             } else {
-                self?.succesResult?(username)
+                self?.onLoginSucess?(username)
             }
         }
     }

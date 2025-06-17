@@ -25,7 +25,7 @@ class ReminderFlowController {
     
     /* MARK: - StartFlow */
     func start() -> UINavigationController {
-        let startViewController: SplashViewController = self.viewControllerFactory.makeSplashViewController(delegate: self)
+        let startViewController: SplashViewController = self.viewControllerFactory.makeSplashViewController(flowDelegate: self)
         self.navigationController = UINavigationController(rootViewController: startViewController)
         
         return self.navigationController
@@ -35,7 +35,7 @@ class ReminderFlowController {
 /* MARK: - Splash */
 extension ReminderFlowController: SplashFlowDelegate {
     func openLogin() {
-        let loginViewController: LoginViewController = self.viewControllerFactory.makeLoginViewController(delegate: self)
+        let loginViewController: LoginViewController = self.viewControllerFactory.makeLoginViewController(flowDelegate: self)
         loginViewController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         loginViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.navigationController.present(loginViewController, animated: false) {
@@ -44,9 +44,8 @@ extension ReminderFlowController: SplashFlowDelegate {
         
         func navigateToHome() {
             self.navigationController.dismiss(animated: false)
-            let viewController: UIViewController = UIViewController()
-            viewController.view.backgroundColor = .systemBlue
-            self.navigationController.pushViewController(viewController, animated: true)
+            let homeViewController: HomeViewController =  self.viewControllerFactory.makeHomeViewController(flowDelegate: self)
+            self.navigationController.pushViewController(homeViewController, animated: true)
         }
     }
 }
@@ -55,9 +54,17 @@ extension ReminderFlowController: SplashFlowDelegate {
 extension ReminderFlowController: LoginFlowDelegate {
     func navigateToHome() {
         self.navigationController.dismiss(animated: false)
-        let viewController: UIViewController = UIViewController()
-        viewController.view.backgroundColor = .systemBlue
-        self.navigationController.pushViewController(viewController, animated: true)
+        let homeViewController: HomeViewController =  self.viewControllerFactory.makeHomeViewController(flowDelegate: self)
+        self.navigationController.pushViewController(homeViewController, animated: true)
     }
 }
 
+//MARK: - Home
+extension ReminderFlowController: HomeFlowDelegate {
+    func navigateToRecipes() {}
+    func logout() {
+        self.navigationController.viewControllers = []
+        let splashViewController: SplashViewController = self.viewControllerFactory.makeSplashViewController(flowDelegate: self)
+        self.navigationController.pushViewController(splashViewController, animated: true)
+    }
+}

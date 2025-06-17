@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class LoginView: UIView {
-    public weak var delegate: LoginViewDelegate?
+    public weak var viewDelegate: LoginViewDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -23,7 +23,7 @@ class LoginView: UIView {
     private let handleArea: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.gray_800
-        view.layer.cornerRadius = Metrics.tiny
+        view.layer.cornerRadius = Metrics.s4
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -70,9 +70,8 @@ class LoginView: UIView {
         button.setTitle("login.button.title".localized, for: UIControl.State.normal)
         button.setTitleColor(Colors.gray_100, for: UIControl.State.normal)
         button.titleLabel?.font = Typographies.subheading
-//        button.tintColor = Colors.gray_100
         button.backgroundColor = Colors.red_primary
-        button.layer.cornerRadius = Metrics.large
+        button.layer.cornerRadius = Metrics.s7
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -80,7 +79,7 @@ class LoginView: UIView {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        setupView()
         
         self.loginButton.addTarget(self, action: #selector(loginButtonDidTapped), for: UIControl.Event.touchUpInside)
         self.titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(exampleTaped)))
@@ -94,9 +93,9 @@ class LoginView: UIView {
         print("Clicou na label")
     }
     
-    private func setupUI() -> Void {
+    private func setupView() -> Void {
         self.backgroundColor = Colors.gray_100
-        self.layer.cornerRadius = Metrics.small
+        self.layer.cornerRadius = Metrics.s6
         
 //        self.addSubview(self.handleArea)
         self.addSubview(self.titleLabel)
@@ -116,29 +115,29 @@ class LoginView: UIView {
 //            self.handleArea.widthAnchor.constraint(equalToConstant: 40),
 //            self.handleArea.heightAnchor.constraint(equalToConstant: 6),
   
-            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.huge),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.medium),
+            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.s12),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
             
-            self.emailTextFieldLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: Metrics.small + Metrics.large),
-            self.emailTextFieldLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.medium),
+            self.emailTextFieldLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: Metrics.s10),
+            self.emailTextFieldLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
             
-            self.emailTextField.topAnchor.constraint(equalTo: self.emailTextFieldLabel.bottomAnchor, constant: Metrics.small),
-            self.emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.medium),
-            self.emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.medium),
+            self.emailTextField.topAnchor.constraint(equalTo: self.emailTextFieldLabel.bottomAnchor, constant: Metrics.s3),
+            self.emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
+            self.emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s6),
             self.emailTextField.heightAnchor.constraint(equalToConstant: Metrics.inputSize),
             
-            self.passwordTextFieldLabel.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: Metrics.tiny + Metrics.small),
-            self.passwordTextFieldLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.medium),
+            self.passwordTextFieldLabel.topAnchor.constraint(equalTo: self.emailTextField.bottomAnchor, constant: Metrics.s5),
+            self.passwordTextFieldLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
             
-            self.passwordTextField.topAnchor.constraint(equalTo: self.passwordTextFieldLabel.bottomAnchor, constant: Metrics.small),
-            self.passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.medium),
-            self.passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.medium),
+            self.passwordTextField.topAnchor.constraint(equalTo: self.passwordTextFieldLabel.bottomAnchor, constant: Metrics.s3),
+            self.passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
+            self.passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s6),
             self.passwordTextField.heightAnchor.constraint(equalToConstant: Metrics.inputSize),
       
             
-            self.loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.medium),
-            self.loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.medium),
-            self.loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Metrics.huge),
+            self.loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
+            self.loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s6),
+            self.loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Metrics.s12),
             self.loginButton.heightAnchor.constraint(equalToConstant: Metrics.buttomSize)
         ])
     }
@@ -146,6 +145,6 @@ class LoginView: UIView {
     @objc private func loginButtonDidTapped() {
         let username = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        delegate?.sendLoginData(user: username, password: password)
+        viewDelegate?.sendLoginData(user: username, password: password)
     }
 }

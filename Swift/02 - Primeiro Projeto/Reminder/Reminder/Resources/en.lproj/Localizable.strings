@@ -8,7 +8,6 @@
 
 
 /* MARK: - Login Screen */
-
 "login.lable.title" = "Entre para acessar suas receitas";
 "login.lable.emailTextField" = "E-mail";
 "login.placeholder.email" = "email@exemplo.com";
@@ -17,6 +16,8 @@
 "login.button.title" = "Entrar";
 
 /* MARK: - Home Screen */
+"home.label.welcome" = "Boas vindas";
+"home.buttom.text" = "Avaliar";
 
 /* MARK: - Receipts Screen */
 

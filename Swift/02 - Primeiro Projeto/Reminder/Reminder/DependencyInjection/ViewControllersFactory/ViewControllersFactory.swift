@@ -8,16 +8,23 @@
 import Foundation
 
 final class ViewControllersFactory: ViewControllersFactoryProtocol {
-    func makeSplashViewController(delegate: SplashFlowDelegate) -> SplashViewController {
-        let contentView = SplashView()
-        let viewController = SplashViewController(contentView: contentView, delegate: delegate)
+    func makeSplashViewController(flowDelegate: SplashFlowDelegate) -> SplashViewController {
+        let contentView: SplashView = SplashView()
+        let viewController: SplashViewController = SplashViewController(contentView: contentView, flowDelegate: flowDelegate)
         
         return viewController
     }
     
-    func makeLoginViewController(delegate: LoginFlowDelegate) -> LoginViewController {
-        let contentView = LoginView()
-        let viewController = LoginViewController(contentView: contentView, delegate: delegate)
+    func makeLoginViewController(flowDelegate: LoginFlowDelegate) -> LoginViewController {
+        let contentView: LoginView = LoginView()
+        let viewController: LoginViewController = LoginViewController(contentView: contentView, flowDelegate: flowDelegate)
+        
+        return viewController
+    }
+    
+    func makeHomeViewController(flowDelegate: HomeFlowDelegate) -> HomeViewController {
+        let contentView: HomeView = HomeView()
+        let viewController: HomeViewController = HomeViewController(contentView: contentView, flowDelegate: flowDelegate)
         
         return viewController
     }

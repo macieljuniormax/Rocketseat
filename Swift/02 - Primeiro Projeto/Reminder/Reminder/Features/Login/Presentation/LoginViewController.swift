@@ -12,12 +12,12 @@ class LoginViewController: UIViewController {
     private let contentView: LoginView
     private let viewModel: LoginViewModel = LoginViewModel()
     private var handleAreaHeigh: CGFloat = 50.0
-    private weak var delegate: LoginFlowDelegate?
+    private weak var flowDelegate: LoginFlowDelegate?
     
     init(contentView: LoginView,
-         delegate: LoginFlowDelegate) {
+         flowDelegate: LoginFlowDelegate) {
         self.contentView = contentView
-        self.delegate = delegate
+        self.flowDelegate = flowDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,10 +28,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() -> Void {
         super.viewDidLoad()
         
-        self.contentView.delegate = self
+        self.contentView.viewDelegate = self
         self.setupUI()
-        self.setupGesture()
-        self.bindViewModel()
+        self.setupBindViewModel()
     }
     
     private func setupUI() -> Void {
@@ -51,18 +50,19 @@ class LoginViewController: UIViewController {
         let heightConstraint = self.contentView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5)
         heightConstraint.isActive = true
     }
-    
-    private func setupGesture() -> Void {
-        
-    }
+
     
     private func handlePanGesture() -> Void {
         
     }
     
-    private func bindViewModel() -> Void {
-        self.viewModel.succesResult = { [weak self] username in
+    private func setupBindViewModel() -> Void {
+        self.viewModel.onLoginSucess = { [weak self] username in
             self?.presentSaveLoginAlert(email: username)
+        }
+        
+        self.viewModel.onLoginError = { [weak self] errorMessage in
+            self?.presentSaveLoginAlert(message: errorMessage)
         }
     }
     
@@ -74,12 +74,12 @@ class LoginViewController: UIViewController {
                                                       style: UIAlertAction.Style.default) { _ in
             let user: User = User(email: email, isUserSave: true)
             UserDefaultsManager.saveUser(user: user)
-            self.delegate?.navigateToHome()
+            self.flowDelegate?.navigateToHome()
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Não",
                                                       style: UIAlertAction.Style.cancel) { _ in
-            self.delegate?.navigateToHome()
+            self.flowDelegate?.navigateToHome()
         }
         
         alertController.addAction(saveAction)
@@ -88,6 +88,27 @@ class LoginViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
+    private func presentSaveLoginAlert(message: String) -> Void {
+        let alertController: UIAlertController = UIAlertController(title: "Credenciais Inválidas",
+                                                                   message: message,
+                                                                   preferredStyle: UIAlertController.Style.alert)
+        let retryAction: UIAlertAction = UIAlertAction(title: "Tentar Novamente",
+                                                        style: UIAlertAction.Style.default)
+        alertController.addAction(retryAction)
+        
+        self.present(alertController, animated: true)
+    }
+}
+
+/* MARK: - Delegates */
+extension LoginViewController: LoginViewDelegate {
+    func sendLoginData(user: String, password: String) {
+        self.viewModel.doAuthentication(username: user, password: password)
+    }
+}
+
+/* MARK: - Animations */
+extension LoginViewController {
     func animateShow(completion: (() -> Void)? = nil) -> Void {
         self.view.layoutIfNeeded()
         self.contentView.transform = CGAffineTransform(translationX: 0, y: self.contentView.frame.height)
@@ -97,11 +118,5 @@ class LoginViewController: UIViewController {
         }) {
             _ in completion?()
         }
-    }
-}
-
-extension LoginViewController: LoginViewDelegate {
-    func sendLoginData(user: String, password: String) {
-        self.viewModel.doAuthentication(username: user, password: password)
     }
 }

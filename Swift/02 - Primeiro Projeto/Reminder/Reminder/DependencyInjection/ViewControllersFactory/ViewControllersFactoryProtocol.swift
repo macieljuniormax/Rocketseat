@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ViewControllersFactoryProtocol {
-    func makeSplashViewController(delegate: SplashFlowDelegate) -> SplashViewController
-    func makeLoginViewController(delegate: LoginFlowDelegate) -> LoginViewController
+    func makeSplashViewController(flowDelegate: SplashFlowDelegate) -> SplashViewController
+    func makeLoginViewController(flowDelegate: LoginFlowDelegate) -> LoginViewController
+    func makeHomeViewController(flowDelegate: HomeFlowDelegate) -> HomeViewController
 }

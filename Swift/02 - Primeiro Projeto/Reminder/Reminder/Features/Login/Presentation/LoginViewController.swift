@@ -91,7 +91,7 @@ class LoginViewController: UIViewController {
     func animateShow(completion: (() -> Void)? = nil) -> Void {
         self.view.layoutIfNeeded()
         self.contentView.transform = CGAffineTransform(translationX: 0, y: self.contentView.frame.height)
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.contentView.transform = CGAffineTransform.identity
             self.view.layoutIfNeeded()
         }) {

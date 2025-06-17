@@ -31,7 +31,6 @@ class HomeView: UIView {
     
     let profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "profile-image")
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
@@ -51,14 +50,15 @@ class HomeView: UIView {
         return label
     }()
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Júlio Santana"
-        label.textColor = Colors.gray_800
-        label.font = Typographies.heading
+    let nameTextFiled: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Insira seu nome"
+        textField.textColor = Colors.gray_800
+        textField.font = Typographies.heading
+        textField.returnKeyType = UIReturnKeyType.done
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
     
     let feedBackButton: UIButton = {
@@ -76,9 +76,7 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
-        self.backgroundColor = Colors.gray_300
-        
-       
+        self.setupTextField()
     }
     
     required init?(coder: NSCoder) {
@@ -86,10 +84,12 @@ class HomeView: UIView {
     }
     
     private func setupView() {
+        self.backgroundColor = Colors.gray_300
+        
         self.addSubview(self.profileBackground)
         self.profileBackground.addSubview(self.profileImage)
         self.profileBackground.addSubview(self.welcomeLabel)
-        self.profileBackground.addSubview(self.nameLabel)
+        self.profileBackground.addSubview(self.nameTextFiled)
 
         self.addSubview(self.contentBackground)
         self.contentBackground.addSubview(self.feedBackButton)
@@ -113,8 +113,8 @@ class HomeView: UIView {
             self.welcomeLabel.topAnchor.constraint(equalTo: self.profileImage.bottomAnchor, constant: Metrics.s4),
             self.welcomeLabel.leadingAnchor.constraint(equalTo: self.profileImage.leadingAnchor),
             
-            self.nameLabel.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: Metrics.s1),
-            self.nameLabel.leadingAnchor.constraint(equalTo: self.profileImage.leadingAnchor),
+            self.nameTextFiled.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: Metrics.s1),
+            self.nameTextFiled.leadingAnchor.constraint(equalTo: self.profileImage.leadingAnchor),
 
             self.contentBackground.topAnchor.constraint(equalTo: self.profileBackground.bottomAnchor),
             self.contentBackground.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -135,5 +135,24 @@ class HomeView: UIView {
     
     @objc private func profileImageTapped() {
         self.viewDelegate?.didTapProfileImage()
+    }
+    
+    private func setupTextField() {
+        self.nameTextFiled.addTarget(self, action: #selector(nameTextFieldDidEndEditing), for: UIControl.Event.editingChanged)
+        self.nameTextFiled.delegate = self
+    }
+    
+    @objc private func nameTextFieldDidEndEditing () {
+        let username = self.nameTextFiled.text ?? ""
+        UserDefaultsManager.saveUserName(name: username)
+    }
+}
+
+extension HomeView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let userName = textField.text ?? ""
+        UserDefaultsManager.saveUserName(name: userName)
+        return true
     }
 }

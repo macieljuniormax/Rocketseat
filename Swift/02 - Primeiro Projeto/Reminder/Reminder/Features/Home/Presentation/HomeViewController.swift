@@ -10,12 +10,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     private let contentView: HomeView
+    private let viewModel: HomeViewModel
     private weak var flowDelegate: HomeFlowDelegate?
     
     init(contentView: HomeView,
          flowDelegate: HomeFlowDelegate) {
         self.contentView = contentView
         self.flowDelegate = flowDelegate
+        self.viewModel = HomeViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,6 +30,7 @@ class HomeViewController: UIViewController {
         
         self.setupUI()
         self.setupNavigationBar()
+        self.checkForExistingData()
     }
     
     private func setupUI() -> Void {
@@ -56,6 +59,16 @@ class HomeViewController: UIViewController {
         UserDefaultsManager.removeUser()
         self.flowDelegate?.logout()
     }
+    
+    private func checkForExistingData() -> Void {
+        if let user: User = UserDefaultsManager.loadUser() {
+            self.contentView.nameTextFiled.text = UserDefaultsManager.loadUserName()
+        }
+        
+        if let imageProfile = UserDefaultsManager.loadProfileImage() {
+            self.contentView.profileImage.image = imageProfile
+        }
+    }
 }
 
 extension HomeViewController: HomeViewDelegate {
@@ -76,8 +89,10 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as? UIImage {
             self.contentView.profileImage.image = editedImage
+            UserDefaultsManager.saveProfileImage(image: editedImage)
         } else if let originalImage = info[.originalImage] as? UIImage {
             self.contentView.profileImage.image = originalImage
+            UserDefaultsManager.saveProfileImage(image: originalImage)
         }
         
         self.dismiss(animated: true)

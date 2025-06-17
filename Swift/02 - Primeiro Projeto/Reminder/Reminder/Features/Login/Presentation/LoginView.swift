@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class LoginBottomSheetView: UIView {
-    public weak var delegate: LoginBottomSheetViewDelegate?
+class LoginView: UIView {
+    public weak var delegate: LoginViewDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()

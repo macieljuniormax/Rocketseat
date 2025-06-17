@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-protocol LoginBottomSheetViewDelegate: AnyObject {
-    func sendLoginData(user: String, password: String)
+protocol LoginViewDelegate: AnyObject {
+    func sendLoginData(user: String, password: String) -> Void
 }

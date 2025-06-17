@@ -26,7 +26,16 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() -> Void {
         super.viewDidLoad()
         
-        setup()
+        self.decideNavigationFlow()
+        self.setup()
+    }
+    
+    private func decideNavigationFlow() -> Void {
+        if let user: User = UserDefaultsManager.loadUser(), user.isUserSave {
+            self.delegate?.navigateToHome()
+        } else {
+            self.showLogin()
+        }
     }
     
     private func setup() -> Void {
@@ -50,11 +59,11 @@ class SplashViewController: UIViewController {
     }
     
     private func setupGestures() -> Void {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.showLoginBottomSheet))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.showLogin))
         self.view.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func showLoginBottomSheet() -> Void {
+    @objc private func showLogin() -> Void {
         self.delegate?.openLogin()
     }
 }

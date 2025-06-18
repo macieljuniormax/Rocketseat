@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 class HomeViewController: UIViewController {
-    private let contentView: HomeView
-    private let viewModel: HomeViewModel
+    private let homeView: HomeView
+    private let homeViewModel: HomeViewModel
     private weak var flowDelegate: HomeFlowDelegate?
     
     init(contentView: HomeView,
          flowDelegate: HomeFlowDelegate) {
-        self.contentView = contentView
+        self.homeView = contentView
         self.flowDelegate = flowDelegate
-        self.viewModel = HomeViewModel()
+        self.homeViewModel = HomeViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,14 +34,14 @@ class HomeViewController: UIViewController {
     }
     
     private func setupUI() -> Void {
-        self.view.addSubview(self.contentView)
+        self.view.addSubview(self.homeView)
         
-        self.contentView.viewDelegate = self
+        self.homeView.viewDelegate = self
         self.buildHierarchy()
     }
     
     private func buildHierarchy() -> Void {
-        setupContentViewToBounds(contentView: self.contentView)
+        setupContentViewToBounds(contentView: self.homeView)
     }
     
     private func setupNavigationBar() {
@@ -59,11 +59,11 @@ class HomeViewController: UIViewController {
     
     private func checkForExistingData() -> Void {
         if UserDefaultsManager.loadUser() != nil {
-            self.contentView.nameTextFiled.text = UserDefaultsManager.loadUserName()
+            self.homeView.nameTextFiled.text = UserDefaultsManager.loadUserName()
         }
         
         if let imageProfile = UserDefaultsManager.loadProfileImage() {
-            self.contentView.profileImage.image = imageProfile
+            self.homeView.profileImage.image = imageProfile
         }
     }
 }
@@ -89,10 +89,10 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as? UIImage {
-            self.contentView.profileImage.image = editedImage
+            self.homeView.profileImage.image = editedImage
             UserDefaultsManager.saveProfileImage(image: editedImage)
         } else if let originalImage = info[.originalImage] as? UIImage {
-            self.contentView.profileImage.image = originalImage
+            self.homeView.profileImage.image = originalImage
             UserDefaultsManager.saveProfileImage(image: originalImage)
         }
         

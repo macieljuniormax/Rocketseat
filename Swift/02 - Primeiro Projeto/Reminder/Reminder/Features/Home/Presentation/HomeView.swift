@@ -78,8 +78,9 @@ class HomeView: UIView {
     
     private let logoutButton: UIButton = {
         let button = UIButton(type: .system)
-        let buttonImage = UIImage(named: "log-out")
-        button.setImage(buttonImage, for: .normal)
+        button.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.forward",
+                                withConfiguration: UIImage.SymbolConfiguration(weight: .bold)),
+                        for: UIControl.State.normal)
         button.tintColor = Colors.red_primary
         
         button.translatesAutoresizingMaskIntoConstraints = false

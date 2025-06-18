@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
-    private let contentView: LoginView
-    private let viewModel: LoginViewModel = LoginViewModel()
+    private let loginView: LoginView
+    private let loginViewModel: LoginViewModel = LoginViewModel()
     private var handleAreaHeigh: CGFloat = 50.0
     private weak var flowDelegate: LoginFlowDelegate?
     
     init(contentView: LoginView,
          flowDelegate: LoginFlowDelegate) {
-        self.contentView = contentView
+        self.loginView = contentView
         self.flowDelegate = flowDelegate
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,26 +28,26 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() -> Void {
         super.viewDidLoad()
         
-        self.contentView.viewDelegate = self
         self.setupUI()
         self.setupBindViewModel()
     }
     
     private func setupUI() -> Void {
-        self.view.addSubview(self.contentView)
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.loginView)
         
-        self.setupConstraints()
+        self.loginView.viewDelegate = self
+        self.buildHierarchy()
     }
     
-    private func setupConstraints() -> Void {
+    private func buildHierarchy() -> Void {
+        self.loginView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.loginView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.loginView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.loginView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ])
         
-        let heightConstraint = self.contentView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5)
+        let heightConstraint = self.loginView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5)
         heightConstraint.isActive = true
     }
 
@@ -57,11 +57,11 @@ class LoginViewController: UIViewController {
     }
     
     private func setupBindViewModel() -> Void {
-        self.viewModel.onLoginSucess = { [weak self] username in
+        self.loginViewModel.onLoginSucess = { [weak self] username in
             self?.presentSaveLoginAlert(email: username)
         }
         
-        self.viewModel.onLoginError = { [weak self] errorMessage in
+        self.loginViewModel.onLoginError = { [weak self] errorMessage in
             self?.presentSaveLoginAlert(message: errorMessage)
         }
     }
@@ -103,7 +103,7 @@ class LoginViewController: UIViewController {
 /* MARK: - Delegates */
 extension LoginViewController: LoginViewDelegate {
     func sendLoginData(user: String, password: String) {
-        self.viewModel.doAuthentication(username: user, password: password)
+        self.loginViewModel.doAuthentication(username: user, password: password)
     }
 }
 
@@ -111,9 +111,9 @@ extension LoginViewController: LoginViewDelegate {
 extension LoginViewController {
     func animateShow(completion: (() -> Void)? = nil) -> Void {
         self.view.layoutIfNeeded()
-        self.contentView.transform = CGAffineTransform(translationX: 0, y: self.contentView.frame.height)
+        self.loginView.transform = CGAffineTransform(translationX: 0, y: self.loginView.frame.height)
         UIView.animate(withDuration: 0.5, animations: {
-            self.contentView.transform = CGAffineTransform.identity
+            self.loginView.transform = CGAffineTransform.identity
             self.view.layoutIfNeeded()
         }) {
             _ in completion?()

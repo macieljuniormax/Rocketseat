@@ -61,6 +61,28 @@ class HomeView: UIView {
         return textField
     }()
     
+    let myPrescriptionsButton: ButtonHomeView = {
+        let button = ButtonHomeView(icon:UIImage(named: "paper")!,
+                                    title: "Minhas receitas",
+                                    description: "Acompanhe os medicamentos e gerencie lembretes")
+        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let newPrescriptionsButton: ButtonHomeView = {
+        let button = ButtonHomeView(icon:UIImage(named: "pills")!,
+                                    title: "Nova receita",
+                                    description: "Cadastre novos lembretes de receitas")
+        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        button.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     let feedBackButton: UIButton = {
         let button = UIButton()
         button.setTitle("home.buttom.text".localized, for: UIControl.State.normal)
@@ -92,6 +114,8 @@ class HomeView: UIView {
         self.profileBackground.addSubview(self.nameTextFiled)
 
         self.addSubview(self.contentBackground)
+        self.addSubview(self.myPrescriptionsButton)
+        self.addSubview(self.newPrescriptionsButton)
         self.contentBackground.addSubview(self.feedBackButton)
 
         self.setupConstraints()
@@ -120,6 +144,16 @@ class HomeView: UIView {
             self.contentBackground.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.contentBackground.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.contentBackground.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            self.myPrescriptionsButton.topAnchor.constraint(equalTo: self.contentBackground.topAnchor, constant: Metrics.s10),
+            self.myPrescriptionsButton.leadingAnchor.constraint(equalTo: self.contentBackground.leadingAnchor, constant: Metrics.s8),
+            self.myPrescriptionsButton.trailingAnchor.constraint(equalTo: self.contentBackground.trailingAnchor, constant: -Metrics.s8),
+            self.myPrescriptionsButton.heightAnchor.constraint(equalToConstant: 112),
+            
+            self.newPrescriptionsButton.topAnchor.constraint(equalTo: self.myPrescriptionsButton.bottomAnchor, constant: Metrics.s4),
+            self.newPrescriptionsButton.leadingAnchor.constraint(equalTo: self.contentBackground.leadingAnchor, constant: Metrics.s8),
+            self.newPrescriptionsButton.trailingAnchor.constraint(equalTo: self.contentBackground.trailingAnchor, constant: -Metrics.s8),
+            self.newPrescriptionsButton.heightAnchor.constraint(equalToConstant: 112),
             
             self.feedBackButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
             self.feedBackButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s6),

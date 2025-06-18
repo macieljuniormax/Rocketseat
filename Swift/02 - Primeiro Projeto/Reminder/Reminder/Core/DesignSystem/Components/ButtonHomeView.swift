@@ -28,7 +28,6 @@ class ButtonHomeView: UIView {
     
     private let separatorView: UIView = {
         let view = UIView()
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -70,6 +69,7 @@ class ButtonHomeView: UIView {
         self.descriptionLabel.text = description
         
         self.setupView()
+        self.setupSelfClass()
     }
     
     required init?(coder: NSCoder) {
@@ -95,25 +95,25 @@ class ButtonHomeView: UIView {
     
     private func setupConstraints() -> Void {
         NSLayoutConstraint.activate([
+            self.iconView.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.s3),
             self.iconView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s3),
-            self.iconView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.iconView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Metrics.s3),
             self.iconView.heightAnchor.constraint(equalToConstant: 80),
             self.iconView.widthAnchor.constraint(equalToConstant: 80),
-            
         
-            self.iconImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.iconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.iconImageView.centerXAnchor.constraint(equalTo: self.iconView.centerXAnchor),
+            self.iconImageView.centerYAnchor.constraint(equalTo: self.iconView.centerYAnchor),
             self.iconImageView.heightAnchor.constraint(equalToConstant: Metrics.s12),
             self.iconImageView.widthAnchor.constraint(equalToConstant: Metrics.s12),
             
-            self.separatorView.centerYAnchor.constraint(equalTo: iconView.centerYAnchor, constant: Metrics.s3),
-            self.separatorView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: Metrics.s4),
-            self.separatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -Metrics.s5),
-            
+            self.separatorView.centerYAnchor.constraint(equalTo: iconView.centerYAnchor),
+            self.separatorView.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: Metrics.s4),
+            self.separatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s5),
+
             self.titleLabel.topAnchor.constraint(equalTo: self.separatorView.topAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.separatorView.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.separatorView.trailingAnchor),
-            
+
             self.descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.s2),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: separatorView.leadingAnchor),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: separatorView.trailingAnchor),
@@ -121,8 +121,8 @@ class ButtonHomeView: UIView {
             
             self.arrowImageView.topAnchor.constraint(equalTo: iconView.topAnchor),
             self.arrowImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s4),
-            self.arrowImageView.heightAnchor.constraint(equalToConstant: Metrics.s4),
-            self.arrowImageView.widthAnchor.constraint(equalToConstant: Metrics.s4),
+            self.arrowImageView.heightAnchor.constraint(equalToConstant: Metrics.s5),
+            self.arrowImageView.widthAnchor.constraint(equalToConstant: Metrics.s5),
         ])
     }
     

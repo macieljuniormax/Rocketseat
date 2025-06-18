@@ -82,15 +82,10 @@ class LoginView: UIView {
         setupView()
         
         self.loginButton.addTarget(self, action: #selector(loginButtonDidTapped), for: UIControl.Event.touchUpInside)
-        self.titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(exampleTaped)))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc private func exampleTaped() -> Void {
-        print("Clicou na label")
     }
     
     private func setupView() -> Void {
@@ -145,6 +140,6 @@ class LoginView: UIView {
     @objc private func loginButtonDidTapped() {
         let username = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        viewDelegate?.sendLoginData(user: username, password: password)
+        self.viewDelegate?.sendLoginData(user: username, password: password)
     }
 }

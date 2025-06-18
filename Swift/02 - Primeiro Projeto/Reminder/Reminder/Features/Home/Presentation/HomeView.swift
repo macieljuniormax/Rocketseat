@@ -11,7 +11,7 @@ import UIKit
 class HomeView: UIView {
     public weak var viewDelegate : HomeViewDelegate?
     
-    let profileBackground: UIView = {
+    private let profileBackground: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.gray_300
         
@@ -19,14 +19,14 @@ class HomeView: UIView {
         return view
     }()
     
-    let profile: UIView = {
+    private let profile: UIView = {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let contentBackground: UIView = {
+    private let contentBackground: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.gray_100
         view.layer.cornerRadius = Metrics.s6
@@ -37,14 +37,14 @@ class HomeView: UIView {
         return view
     }()
     
-    let content: UIView = {
+    private let content: UIView = {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let profileImage: UIImageView = {
+    internal let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.clipsToBounds = true
@@ -55,7 +55,7 @@ class HomeView: UIView {
         return imageView
     }()
     
-    let welcomeLabel: UILabel = {
+    private let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "home.label.welcome".localized
         label.textColor = Colors.gray_700
@@ -65,7 +65,7 @@ class HomeView: UIView {
         return label
     }()
     
-    let nameTextFiled: UITextField = {
+    internal let nameTextFiled: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Insira seu nome"
         textField.textColor = Colors.gray_800
@@ -76,7 +76,17 @@ class HomeView: UIView {
         return textField
     }()
     
-    let myPrescriptionsButton: ButtonHomeView = {
+    private let logoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        let buttonImage = UIImage(named: "log-out")
+        button.setImage(buttonImage, for: .normal)
+        button.tintColor = Colors.red_primary
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let myPrescriptionsButton: ButtonHomeView = {
         let button = ButtonHomeView(icon:UIImage(named: "paper")!,
                                     title: "Minhas receitas",
                                     description: "Acompanhe os medicamentos e gerencie lembretes")
@@ -87,7 +97,7 @@ class HomeView: UIView {
         return button
     }()
     
-    let newPrescriptionsButton: ButtonHomeView = {
+    private let newPrescriptionsButton: ButtonHomeView = {
         let button = ButtonHomeView(icon:UIImage(named: "pills")!,
                                     title: "Nova receita",
                                     description: "Cadastre novos lembretes de receitas")
@@ -98,7 +108,7 @@ class HomeView: UIView {
         return button
     }()
     
-    let feedBackButton: UIButton = {
+    private let feedBackButton: UIButton = {
         let button = UIButton()
         button.setTitle("home.buttom.text".localized, for: UIControl.State.normal)
         button.setTitleColor(Colors.gray_100, for: .normal)
@@ -114,6 +124,8 @@ class HomeView: UIView {
         super.init(frame: frame)
         self.setupView()
         self.setupTextField()
+        
+        self.logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: UIControl.Event.touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -129,6 +141,7 @@ class HomeView: UIView {
         self.profile.addSubview(self.profileImage)
         self.profile.addSubview(self.welcomeLabel)
         self.profile.addSubview(self.nameTextFiled)
+        self.profile.addSubview(self.logoutButton)
 
         self.addSubview(self.contentBackground)
         self.contentBackground.addSubview(self.content)
@@ -163,6 +176,11 @@ class HomeView: UIView {
             self.nameTextFiled.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: Metrics.s1),
             self.nameTextFiled.leadingAnchor.constraint(equalTo: self.profileImage.leadingAnchor),
             self.nameTextFiled.bottomAnchor.constraint(equalTo: self.profile.bottomAnchor, constant: -Metrics.s8),
+            
+            self.logoutButton.heightAnchor.constraint(equalToConstant: Metrics.s6),
+            self.logoutButton.widthAnchor.constraint(equalToConstant: Metrics.s6),
+            self.logoutButton.topAnchor.constraint(equalTo: self.profileImage.topAnchor, constant: Metrics.s1),
+            self.logoutButton.trailingAnchor.constraint(equalTo: self.profile.trailingAnchor, constant: -Metrics.s8),
 
             self.contentBackground.topAnchor.constraint(equalTo: self.profileBackground.bottomAnchor),
             self.contentBackground.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -206,6 +224,10 @@ class HomeView: UIView {
     @objc private func nameTextFieldDidEndEditing () {
         let username = self.nameTextFiled.text ?? ""
         UserDefaultsManager.saveUserName(name: username)
+    }
+    
+    @objc private func logoutButtonTapped() {
+        self.viewDelegate?.didTapLogoutButton()
     }
 }
 

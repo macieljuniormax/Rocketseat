@@ -45,9 +45,6 @@ class HomeViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-//        self.navigationController?.navigationBar.isHidden = false
-//        self.navigationItem.hidesBackButton = true
-//        
         let logoutButton = UIBarButtonItem(
             image: UIImage(named: "log-out"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutAction))
         
@@ -74,6 +71,10 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewDelegate {
     func didTapProfileImage() {
         self.selectProfileImage()
+    }
+    
+    func didTapLogoutButton() {
+        self.logoutAction()
     }
 }
 

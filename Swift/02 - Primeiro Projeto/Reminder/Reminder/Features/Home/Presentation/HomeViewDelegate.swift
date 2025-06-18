@@ -10,4 +10,5 @@ import UIKit
 
 protocol HomeViewDelegate: AnyObject {
     func didTapProfileImage() -> Void
+    func didTapLogoutButton() -> Void
 }

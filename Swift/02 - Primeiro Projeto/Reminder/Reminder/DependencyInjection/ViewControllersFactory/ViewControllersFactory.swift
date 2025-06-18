@@ -28,4 +28,10 @@ final class ViewControllersFactory: ViewControllersFactoryProtocol {
         
         return viewController
     }
+    
+    func makeNewRecipeViewController() -> NewRecipeViewController {
+        let viewController: NewRecipeViewController = NewRecipeViewController()
+        
+        return viewController
+    }
 }

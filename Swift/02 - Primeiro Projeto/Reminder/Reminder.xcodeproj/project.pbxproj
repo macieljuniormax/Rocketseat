@@ -38,9 +38,10 @@
 		5663F97A2E01FB020091DDF9 /* HomeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F9792E01FAF50091DDF9 /* HomeViewDelegate.swift */; };
 		5663F97C2E0212F30091DDF9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F97B2E0212F30091DDF9 /* HomeViewModel.swift */; };
 		5663F97F2E021E060091DDF9 /* ButtonHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F97E2E021E060091DDF9 /* ButtonHomeView.swift */; };
-		5663F9902E02E5F40091DDF9 /* NewReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F98F2E02E5F40091DDF9 /* NewReceiptViewController.swift */; };
-		5663F9932E02E63E0091DDF9 /* NewReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F9922E02E63E0091DDF9 /* NewReceiptView.swift */; };
+		5663F9902E02E5F40091DDF9 /* NewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F98F2E02E5F40091DDF9 /* NewRecipeViewController.swift */; };
+		5663F9932E02E63E0091DDF9 /* NewRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F9922E02E63E0091DDF9 /* NewRecipeView.swift */; };
 		5663F9962E0318A00091DDF9 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F9952E0318A00091DDF9 /* Input.swift */; };
+		5663F9982E032CED0091DDF9 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5663F9972E032CED0091DDF9 /* Checkbox.swift */; };
 		A96A6BA1D994DDE09FEDBEA9 /* Pods_ReminderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B92637B7EAEBF68D56BF8A /* Pods_ReminderTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,9 +96,10 @@
 		5663F9792E01FAF50091DDF9 /* HomeViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDelegate.swift; sourceTree = "<group>"; };
 		5663F97B2E0212F30091DDF9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5663F97E2E021E060091DDF9 /* ButtonHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonHomeView.swift; sourceTree = "<group>"; };
-		5663F98F2E02E5F40091DDF9 /* NewReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiptViewController.swift; sourceTree = "<group>"; };
-		5663F9922E02E63E0091DDF9 /* NewReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiptView.swift; sourceTree = "<group>"; };
+		5663F98F2E02E5F40091DDF9 /* NewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeViewController.swift; sourceTree = "<group>"; };
+		5663F9922E02E63E0091DDF9 /* NewRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeView.swift; sourceTree = "<group>"; };
 		5663F9952E0318A00091DDF9 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		5663F9972E032CED0091DDF9 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		567D79582E00A003008AD49F /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567D796E2E00A005008AD49F /* ReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReminderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		567D79782E00A005008AD49F /* ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReminderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +408,7 @@
 			children = (
 				5663F97E2E021E060091DDF9 /* ButtonHomeView.swift */,
 				5663F9952E0318A00091DDF9 /* Input.swift */,
+				5663F9972E032CED0091DDF9 /* Checkbox.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -429,8 +432,8 @@
 		5663F98E2E02E5B90091DDF9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				5663F98F2E02E5F40091DDF9 /* NewReceiptViewController.swift */,
-				5663F9922E02E63E0091DDF9 /* NewReceiptView.swift */,
+				5663F98F2E02E5F40091DDF9 /* NewRecipeViewController.swift */,
+				5663F9922E02E63E0091DDF9 /* NewRecipeView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				5605CD5E2E00C02B0016D1B6 /* LoginView.swift in Sources */,
 				5605CD5F2E00C02B0016D1B6 /* LoginViewController.swift in Sources */,
 				5605CD662E00C0D20016D1B6 /* ReminderFlowController.swift in Sources */,
+				5663F9982E032CED0091DDF9 /* Checkbox.swift in Sources */,
 				5605CD612E00C02B0016D1B6 /* SplashView.swift in Sources */,
 				5663F9782E019AAC0091DDF9 /* ViewController+Ext.swift in Sources */,
 				5605CD622E00C02B0016D1B6 /* SplashViewController.swift in Sources */,
@@ -746,10 +750,10 @@
 				5663F9652E0100FF0091DDF9 /* User.swift in Sources */,
 				5663F9522E00CE8D0091DDF9 /* LoginFlowDelegate.swift in Sources */,
 				5663F9532E00CE8D0091DDF9 /* LoginViewDelegate.swift in Sources */,
-				5663F9932E02E63E0091DDF9 /* NewReceiptView.swift in Sources */,
+				5663F9932E02E63E0091DDF9 /* NewRecipeView.swift in Sources */,
 				5605CD642E00C02B0016D1B6 /* SceneDelegate.swift in Sources */,
 				5663F97F2E021E060091DDF9 /* ButtonHomeView.swift in Sources */,
-				5663F9902E02E5F40091DDF9 /* NewReceiptViewController.swift in Sources */,
+				5663F9902E02E5F40091DDF9 /* NewRecipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

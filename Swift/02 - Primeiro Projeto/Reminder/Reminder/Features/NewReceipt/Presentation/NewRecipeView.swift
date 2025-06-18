@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class NewReceiptView: UIView {
-    private let backButton: UIButton = {
+class NewRecipeView: UIView {
+    internal let backButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
         button.setImage(UIImage(systemName: "arrow.left",
                                 withConfiguration: UIImage.SymbolConfiguration(weight: .bold)),
@@ -41,9 +41,10 @@ class NewReceiptView: UIView {
         return label
     }()
     
-    private let remedyInput = Input(title: "Remédio", placeholder: "Nome do medicamento")
-    private let timeInput = Input(title: "Horário", placeholder: "12:00")
-    private let recurrrenceInput = Input(title: "Recorrência", placeholder: "Selecione")
+    private let remedyInput: Input = Input(title: "Remédio", placeholder: "Nome do medicamento")
+    private let timeInput: Input = Input(title: "Horário", placeholder: "12:00")
+    private let recurrrenceInput: Input = Input(title: "Recorrência", placeholder: "Selecione")
+    private let takeNowCheckbox: Checkbox = Checkbox(title: "Tomar agora")
     
     private let addButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
@@ -56,8 +57,6 @@ class NewReceiptView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,6 +76,7 @@ class NewReceiptView: UIView {
         self.addSubview(self.remedyInput)
         self.addSubview(self.timeInput)
         self.addSubview(self.recurrrenceInput)
+        self.addSubview(self.takeNowCheckbox)
         
         self.setupConstraints()
     }
@@ -95,11 +95,6 @@ class NewReceiptView: UIView {
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s8),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
             
-            self.addButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s8),
-            self.addButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.addButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s8),
-            self.addButton.heightAnchor.constraint(equalToConstant: Metrics.buttomSize),
-            
             self.remedyInput.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: Metrics.s10),
             self.remedyInput.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s8),
             self.remedyInput.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s8),
@@ -111,6 +106,14 @@ class NewReceiptView: UIView {
             self.recurrrenceInput.topAnchor.constraint(equalTo: self.timeInput.bottomAnchor, constant: Metrics.s5),
             self.recurrrenceInput.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s8),
             self.recurrrenceInput.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s8),
+            
+            self.takeNowCheckbox.topAnchor.constraint(equalTo: self.recurrrenceInput.bottomAnchor, constant: Metrics.s5),
+            self.takeNowCheckbox.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s8),
+            
+            self.addButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s8),
+            self.addButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.addButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s8),
+            self.addButton.heightAnchor.constraint(equalToConstant: Metrics.buttomSize),
         ])
     }
 }

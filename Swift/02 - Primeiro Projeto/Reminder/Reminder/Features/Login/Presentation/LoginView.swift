@@ -129,7 +129,6 @@ class LoginView: UIView {
             self.passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s6),
             self.passwordTextField.heightAnchor.constraint(equalToConstant: Metrics.inputSize),
       
-            
             self.loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
             self.loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s6),
             self.loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Metrics.s12),

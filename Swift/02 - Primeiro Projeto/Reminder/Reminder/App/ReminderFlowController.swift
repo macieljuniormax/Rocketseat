@@ -25,7 +25,8 @@ class ReminderFlowController {
     
     /* MARK: - StartFlow */
     func start() -> UINavigationController {
-        let startViewController: NewReceiptViewController /*SplashViewController = self.viewControllerFactory.makeSplashViewController(flowDelegate: self)*/ = NewReceiptViewController()
+        let startViewController: SplashViewController = self.viewControllerFactory.makeSplashViewController(flowDelegate: self)
+        self.navigationController.navigationBar.isHidden = true
         self.navigationController = UINavigationController(rootViewController: startViewController)
         
         return self.navigationController
@@ -45,6 +46,7 @@ extension ReminderFlowController: SplashFlowDelegate {
         func navigateToHome() {
             self.navigationController.dismiss(animated: false)
             let homeViewController: HomeViewController =  self.viewControllerFactory.makeHomeViewController(flowDelegate: self)
+            self.navigationController.navigationBar.isHidden = true
             self.navigationController.pushViewController(homeViewController, animated: true)
         }
     }
@@ -55,16 +57,22 @@ extension ReminderFlowController: LoginFlowDelegate {
     func navigateToHome() {
         self.navigationController.dismiss(animated: false)
         let homeViewController: HomeViewController =  self.viewControllerFactory.makeHomeViewController(flowDelegate: self)
+        self.navigationController.navigationBar.isHidden = true
         self.navigationController.pushViewController(homeViewController, animated: true)
     }
 }
 
 //MARK: - Home
 extension ReminderFlowController: HomeFlowDelegate {
-    func navigateToRecipes() {}
     func logout() {
         self.navigationController.viewControllers = []
         let splashViewController: SplashViewController = self.viewControllerFactory.makeSplashViewController(flowDelegate: self)
         self.navigationController.pushViewController(splashViewController, animated: true)
+    }
+    
+    func navigateToRecipes() {
+        let recipesViewController = viewControllerFactory.makeNewRecipeViewController()
+        self.navigationController.navigationBar.isHidden = true
+        self.navigationController.pushViewController(recipesViewController, animated: true)
     }
 }

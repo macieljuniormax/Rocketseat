@@ -98,7 +98,7 @@ class HomeView: UIView {
         return button
     }()
     
-    private let newPrescriptionsButton: ButtonHomeView = {
+    internal let newPrescriptionsButton: ButtonHomeView = {
         let button = ButtonHomeView(icon:UIImage(named: "pills")!,
                                     title: "Nova receita",
                                     description: "Cadastre novos lembretes de receitas")
@@ -125,6 +125,7 @@ class HomeView: UIView {
         super.init(frame: frame)
         self.setupView()
         self.setupTextField()
+        self.setupImageGesture()
         
         self.logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: UIControl.Event.touchUpInside)
     }
@@ -152,7 +153,6 @@ class HomeView: UIView {
         self.content.addSubview(self.feedBackButton)
 
         self.setupConstraints()
-        self.setupImageGesture()
     }
     
     private func setupConstraints() {
@@ -211,6 +211,7 @@ class HomeView: UIView {
     private func setupImageGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped))
         self.profileImage.addGestureRecognizer(tapGestureRecognizer)
+        self.isUserInteractionEnabled = true
     }
     
     @objc private func profileImageTapped() {

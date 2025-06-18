@@ -31,11 +31,12 @@ class HomeViewController: UIViewController {
         self.setupUI()
         self.setupNavigationBar()
         self.checkForExistingData()
+        self.setupForNewRecipe()
+        self.setupActionForNewRecipe()
     }
     
     private func setupUI() -> Void {
         self.view.addSubview(self.homeView)
-        self.navigationController?.navigationBar.isHidden = true
         
         self.homeView.viewDelegate = self
         self.buildHierarchy()
@@ -67,6 +68,16 @@ class HomeViewController: UIViewController {
             self.homeView.profileImage.image = imageProfile
         }
     }
+    
+    private func setupForNewRecipe() -> Void {
+        
+    }
+    
+    private func setupActionForNewRecipe() -> Void {
+        self.homeView.newPrescriptionsButton.tapAction = { [weak self] in
+            self?.didTapNewPescriptionButton()
+        }
+    }
 }
 
 extension HomeViewController: HomeViewDelegate {
@@ -76,6 +87,10 @@ extension HomeViewController: HomeViewDelegate {
     
     func didTapLogoutButton() {
         self.logoutAction()
+    }
+    
+    func didTapNewPescriptionButton() {
+        self.flowDelegate?.navigateToRecipes()
     }
 }
 

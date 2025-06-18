@@ -78,10 +78,12 @@ class ButtonHomeView: UIView {
     
     private func setupView() -> Void {
         self.addSubview(self.iconView)
-        iconView.addSubview(iconImageView)
+        self.iconView.addSubview(iconImageView)
+        
         self.addSubview(self.separatorView)
-        separatorView.addSubview(self.titleLabel)
-        separatorView.addSubview(self.descriptionLabel)
+        self.separatorView.addSubview(self.titleLabel)
+        self.separatorView.addSubview(self.descriptionLabel)
+        
         self.addSubview(self.arrowImageView)
         
         self.setupConstraints()
@@ -100,7 +102,7 @@ class ButtonHomeView: UIView {
             self.iconView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Metrics.s3),
             self.iconView.heightAnchor.constraint(equalToConstant: 80),
             self.iconView.widthAnchor.constraint(equalToConstant: 80),
-        
+            
             self.iconImageView.centerXAnchor.constraint(equalTo: self.iconView.centerXAnchor),
             self.iconImageView.centerYAnchor.constraint(equalTo: self.iconView.centerYAnchor),
             self.iconImageView.heightAnchor.constraint(equalToConstant: Metrics.s12),
@@ -109,15 +111,15 @@ class ButtonHomeView: UIView {
             self.separatorView.centerYAnchor.constraint(equalTo: iconView.centerYAnchor),
             self.separatorView.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: Metrics.s4),
             self.separatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s5),
-
+            
             self.titleLabel.topAnchor.constraint(equalTo: self.separatorView.topAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.separatorView.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.separatorView.trailingAnchor),
-
+            
             self.descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.s2),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: separatorView.leadingAnchor),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: separatorView.trailingAnchor),
-            self.descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: separatorView.bottomAnchor),
+            self.descriptionLabel.bottomAnchor.constraint(equalTo: separatorView.bottomAnchor),
             
             self.arrowImageView.topAnchor.constraint(equalTo: iconView.topAnchor),
             self.arrowImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s4),
@@ -125,5 +127,4 @@ class ButtonHomeView: UIView {
             self.arrowImageView.widthAnchor.constraint(equalToConstant: Metrics.s5),
         ])
     }
-    
 }

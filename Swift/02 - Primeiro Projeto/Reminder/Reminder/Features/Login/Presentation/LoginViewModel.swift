@@ -14,7 +14,7 @@ class LoginViewModel {
     
     func doAuthentication(username: String, password: String) {
         Firebase.Auth.auth().signIn(withEmail: username, password: password) { [weak self] authDataResult, error in
-            if let error = error {
+            if error != nil {
                 self?.onLoginError?("Erro ao autenticar, verifique as credenciais digitadas.")
                 
             } else {

@@ -37,17 +37,17 @@ class HomeViewController: UIViewController {
         self.view.addSubview(self.contentView)
         
         self.contentView.viewDelegate = self
-        self.setupConstraints()
+        self.buildHierarchy()
     }
     
-    private func setupConstraints() -> Void {
+    private func buildHierarchy() -> Void {
         setupContentViewToBounds(contentView: self.contentView)
     }
     
     private func setupNavigationBar() {
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationItem.hidesBackButton = true
-        
+//        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationItem.hidesBackButton = true
+//        
         let logoutButton = UIBarButtonItem(
             image: UIImage(named: "log-out"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutAction))
         
@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
     }
     
     private func checkForExistingData() -> Void {
-        if let user: User = UserDefaultsManager.loadUser() {
+        if UserDefaultsManager.loadUser() != nil {
             self.contentView.nameTextFiled.text = UserDefaultsManager.loadUserName()
         }
         

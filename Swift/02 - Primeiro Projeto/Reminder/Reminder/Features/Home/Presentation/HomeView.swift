@@ -19,11 +19,26 @@ class HomeView: UIView {
         return view
     }()
     
+    let profile: UIView = {
+        let view = UIView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let contentBackground: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.gray_100
         view.layer.cornerRadius = Metrics.s6
+        view.layer.maskedCorners = [CACornerMask.layerMinXMinYCorner, CACornerMask.layerMaxXMinYCorner]
         view.layer.masksToBounds = true
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let content: UIView = {
+        let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -109,14 +124,18 @@ class HomeView: UIView {
         self.backgroundColor = Colors.gray_300
         
         self.addSubview(self.profileBackground)
-        self.profileBackground.addSubview(self.profileImage)
-        self.profileBackground.addSubview(self.welcomeLabel)
-        self.profileBackground.addSubview(self.nameTextFiled)
+        self.profileBackground.addSubview(self.profile)
+        
+        self.profile.addSubview(self.profileImage)
+        self.profile.addSubview(self.welcomeLabel)
+        self.profile.addSubview(self.nameTextFiled)
 
         self.addSubview(self.contentBackground)
-        self.addSubview(self.myPrescriptionsButton)
-        self.addSubview(self.newPrescriptionsButton)
-        self.contentBackground.addSubview(self.feedBackButton)
+        self.contentBackground.addSubview(self.content)
+        
+        self.content.addSubview(self.myPrescriptionsButton)
+        self.content.addSubview(self.newPrescriptionsButton)
+        self.content.addSubview(self.feedBackButton)
 
         self.setupConstraints()
         self.setupImageGesture()
@@ -124,40 +143,48 @@ class HomeView: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            self.profileBackground.topAnchor.constraint(equalTo: self.topAnchor, constant: Metrics.s12),
+            self.profileBackground.topAnchor.constraint(equalTo: self.topAnchor),
             self.profileBackground.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.profileBackground.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.profileBackground.heightAnchor.constraint(equalToConstant: Metrics.profileSize),
             
-            self.profileImage.topAnchor.constraint(equalTo: self.profileBackground.topAnchor, constant: Metrics.s8),
-            self.profileImage.leadingAnchor.constraint(equalTo: self.profileBackground.leadingAnchor, constant: Metrics.s8),
+            self.profile.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.profile.bottomAnchor.constraint(equalTo: self.profileBackground.bottomAnchor),
+            self.profile.leadingAnchor.constraint(equalTo: self.profileBackground.leadingAnchor),
+            self.profile.trailingAnchor.constraint(equalTo: self.profileBackground.trailingAnchor),
+            
             self.profileImage.heightAnchor.constraint(equalToConstant: Metrics.profileImageSize),
             self.profileImage.widthAnchor.constraint(equalToConstant: Metrics.profileImageSize),
-            
+            self.profileImage.topAnchor.constraint(equalTo: self.profile.topAnchor, constant: Metrics.s8),
+            self.profileImage.leadingAnchor.constraint(equalTo: self.profile.leadingAnchor, constant: Metrics.s8),
+
             self.welcomeLabel.topAnchor.constraint(equalTo: self.profileImage.bottomAnchor, constant: Metrics.s4),
             self.welcomeLabel.leadingAnchor.constraint(equalTo: self.profileImage.leadingAnchor),
-            
+
             self.nameTextFiled.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: Metrics.s1),
             self.nameTextFiled.leadingAnchor.constraint(equalTo: self.profileImage.leadingAnchor),
+            self.nameTextFiled.bottomAnchor.constraint(equalTo: self.profile.bottomAnchor, constant: -Metrics.s8),
 
             self.contentBackground.topAnchor.constraint(equalTo: self.profileBackground.bottomAnchor),
             self.contentBackground.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.contentBackground.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.contentBackground.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            self.myPrescriptionsButton.topAnchor.constraint(equalTo: self.contentBackground.topAnchor, constant: Metrics.s10),
-            self.myPrescriptionsButton.leadingAnchor.constraint(equalTo: self.contentBackground.leadingAnchor, constant: Metrics.s8),
-            self.myPrescriptionsButton.trailingAnchor.constraint(equalTo: self.contentBackground.trailingAnchor, constant: -Metrics.s8),
-            self.myPrescriptionsButton.heightAnchor.constraint(equalToConstant: 112),
+            self.content.topAnchor.constraint(equalTo: self.contentBackground.topAnchor),
+            self.content.leadingAnchor.constraint(equalTo: self.contentBackground.leadingAnchor),
+            self.content.trailingAnchor.constraint(equalTo: self.contentBackground.trailingAnchor),
+            self.content.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+
+            self.myPrescriptionsButton.topAnchor.constraint(equalTo: self.content.topAnchor, constant: Metrics.s10),
+            self.myPrescriptionsButton.leadingAnchor.constraint(equalTo: self.content.leadingAnchor, constant: Metrics.s8),
+            self.myPrescriptionsButton.trailingAnchor.constraint(equalTo: self.content.trailingAnchor, constant: -Metrics.s8),
             
             self.newPrescriptionsButton.topAnchor.constraint(equalTo: self.myPrescriptionsButton.bottomAnchor, constant: Metrics.s4),
-            self.newPrescriptionsButton.leadingAnchor.constraint(equalTo: self.contentBackground.leadingAnchor, constant: Metrics.s8),
-            self.newPrescriptionsButton.trailingAnchor.constraint(equalTo: self.contentBackground.trailingAnchor, constant: -Metrics.s8),
-            self.newPrescriptionsButton.heightAnchor.constraint(equalToConstant: 112),
+            self.newPrescriptionsButton.leadingAnchor.constraint(equalTo: self.content.leadingAnchor, constant: Metrics.s8),
+            self.newPrescriptionsButton.trailingAnchor.constraint(equalTo: self.content.trailingAnchor, constant: -Metrics.s8),
             
-            self.feedBackButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metrics.s6),
-            self.feedBackButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.s6),
-            self.feedBackButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Metrics.s12),
+            self.feedBackButton.leadingAnchor.constraint(equalTo: self.content.leadingAnchor, constant: Metrics.s6),
+            self.feedBackButton.trailingAnchor.constraint(equalTo: self.content.trailingAnchor, constant: -Metrics.s6),
+            self.feedBackButton.bottomAnchor.constraint(equalTo: self.content.bottomAnchor),
             self.feedBackButton.heightAnchor.constraint(equalToConstant: Metrics.buttomSize)
         ])
     }

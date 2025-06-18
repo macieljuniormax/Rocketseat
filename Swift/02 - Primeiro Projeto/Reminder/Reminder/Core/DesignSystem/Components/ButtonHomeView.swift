@@ -63,6 +63,7 @@ class ButtonHomeView: UIView {
     
     init(icon: UIImage, title: String, description: String){
         super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.iconImageView.image = icon
         self.titleLabel.text = title

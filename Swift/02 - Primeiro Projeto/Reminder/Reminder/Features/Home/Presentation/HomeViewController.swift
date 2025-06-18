@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
     
     private func setupUI() -> Void {
         self.view.addSubview(self.homeView)
+        self.navigationController?.navigationBar.isHidden = true
         
         self.homeView.viewDelegate = self
         self.buildHierarchy()

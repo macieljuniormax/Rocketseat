@@ -77,7 +77,7 @@ class HomeView: UIView {
     }()
     
     private let logoutButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = UIButton(type: UIButton.ButtonType.system)
         button.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.forward",
                                 withConfiguration: UIImage.SymbolConfiguration(weight: .bold)),
                         for: UIControl.State.normal)
@@ -180,7 +180,7 @@ class HomeView: UIView {
             
             self.logoutButton.heightAnchor.constraint(equalToConstant: Metrics.s6),
             self.logoutButton.widthAnchor.constraint(equalToConstant: Metrics.s6),
-            self.logoutButton.topAnchor.constraint(equalTo: self.profileImage.topAnchor, constant: Metrics.s1),
+            self.logoutButton.topAnchor.constraint(equalTo: self.profileImage.topAnchor),
             self.logoutButton.trailingAnchor.constraint(equalTo: self.profile.trailingAnchor, constant: -Metrics.s8),
 
             self.contentBackground.topAnchor.constraint(equalTo: self.profileBackground.bottomAnchor),

@@ -22,3 +22,6 @@
 /* MARK: - Receipts Screen */
 
 /* MARK: - NewReceipt Screen */
+"newReceipt.label.title" = "Nova receita";
+"newReceipt.label.description" = "Adicione a sua prescrição médica para receber lembretes de quando tomar seu medicamento";
+"newReceipt.button.title" = "Adicionar";

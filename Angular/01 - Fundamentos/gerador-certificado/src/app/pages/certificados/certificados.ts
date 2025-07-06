@@ -16,6 +16,10 @@ export class Certificados implements OnInit {
 
   private _certificados: ICertificado[] = [];
 
+  /* ===== Getters and Setters ===== */
+  public get certificados(): ICertificado[] { return this._certificados; }
+  public set certificados(value: ICertificado[]) { this._certificados = value; }
+
   ngOnInit(): void {
     this._certificados = this.certificadoService.certificados;
     console.log(this._certificados);

@@ -1,6 +1,7 @@
 [build]
+base = "Angular/01 - Fundamentos/gerador-certificado"
 command = "ng build --configuration=production"
-publish = "dist/gerador-certificad/browser"
+publish = "dist/gerador-certificado"
 
 [[redirects]]
 from = "/*"

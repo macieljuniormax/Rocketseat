@@ -59,10 +59,6 @@ export class CertificadoForm {
     this.certificado.dataEmissao = this.dataAtual();
     this.certificadoService.adicionarCertificado(this.certificado)
     this.router.navigate(['/certificados', this.certificado.id]);
-
-
-    // this.limparCampos();
-    // this._form.resetForm();
   }
 
   private dataAtual(): string {
@@ -73,9 +69,5 @@ export class CertificadoForm {
     const dataFormatada = `${dia}/${mes}/${ano}`;
 
     return dataFormatada;
-  }
-
-  private limparCampos(): void {
-    this.certificado = { id: '', nome: '', atividades: [], dataEmissao: '' };
   }
 }

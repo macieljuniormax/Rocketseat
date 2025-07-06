@@ -19,11 +19,14 @@ export class Certificado implements OnInit {
   private _id: string | null = null;
   private _certificado: ICertificado | undefined = undefined;
 
+  /* ===== Getters and Setters ===== */
+  public get certificado(): ICertificado | undefined { return this._certificado; }
+  public set certificado(value: ICertificado | undefined) { this._certificado = value; }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this._id = params.get('id');
       this._certificado = this.certificadoService.certificados.find(item => item.id === this._id);
-      console.log(this._certificado);
     })
   }
 }

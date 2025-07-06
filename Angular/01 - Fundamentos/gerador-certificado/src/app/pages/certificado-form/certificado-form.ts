@@ -23,7 +23,7 @@ export class CertificadoForm {
   private _atividade: string = '';
   private _certificado: ICertificado = { id: '', nome: '', atividades: [], dataEmissao: '' };
 
-  // Getters and Setters
+  /* ===== Getters and Setters ===== */
   public get atividade(): string { return this._atividade; }
   public set atividade(value: string) { this._atividade = value; }
   public get certificado(): ICertificado { return this._certificado; }

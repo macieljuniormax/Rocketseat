@@ -1,43 +1,93 @@
-# Diretórios de ambiente virtual
-venv/
-.env/
-
-# Arquivos de configuração de IDEs
-.vscode/
-.idea/
-
-# Arquivos temporários e de sistema
-*.log
-*.tmp
-*.swp
-.DS_Store
-Thumbs.db
-
-# Arquivos de build
-dist/
-build/
-__pycache__/
-*.pyc
-*.class
-target/
-
-# Node.js
+# ===============================
+# 🌐 Angular (Node.js / Frontend)
+# ===============================
 node_modules/
+dist/
+.angular/
+.angular-cache/
+*.log
+.env
+.env.*.local
 
-# Java (Maven/Gradle)
+# Editor
+.vscode/
+
+# ===============================
+# ☕ Java (Maven / Gradle)
+# ===============================
+*.class
 *.jar
 *.war
 *.ear
-*.class
+target/
+build/
+
+# IDEs (IntelliJ, Eclipse, NetBeans)
+.idea/
+.project
+.classpath
+.settings/
 *.iml
 
-# Jupyter Notebooks - checkpoints
-.ipynb_checkpoints/
+# ===============================
+# 🍏 Xcode / iOS (Swift)
+# ===============================
+# Build e cache
+build/
+DerivedData/
+.swiftpm/
+.build/
 
-# Configurações locais
-*.env
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/
+Carthage.build/
+
+# Interface do usuário e estado pessoal
+*.xcworkspace/
+xcuserdata/
+*.xcuserdatad/
+*.xcuserstate
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# Outros arquivos temporários
+*.DS_Store
+*.swp
+*.tmp
+*.bak
+*.orig
+*.crash
+*.log
+Icon?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===============================
+# 🔒 Arquivos de ambiente
+# ===============================
+.env
+.env.local
+.env.*.local
 *.local
-
-# Arquivos de banco de dados locais
+*.env.*
 *.sqlite
 *.db
+
+# ===============================
+# ⚙️ Ferramentas e utilitários
+# ===============================
+*.pyc
+__pycache__/
+.ipynb_checkpoints/
+*.ipynb

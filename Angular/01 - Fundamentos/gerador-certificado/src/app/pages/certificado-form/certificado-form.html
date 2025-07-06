@@ -29,7 +29,7 @@
         </div>
         }
       </div>
-      <app-secondary-button [ngStyle]="campoInvalido(atividadeRef) ? { 'margin-bottom' : '24px' } : {}"
+      <app-secondary-button [ngStyle]="campoInvalido(atividadeRef) && certificado.atividades.length === 0 ? { 'margin-bottom' : '24px' } : {}"
         textButton="Adicionar" phClass="ph ph-plus" [disabled]="!atividade || atividade.length === 0"
         (click)="adicionarAtividade()">
       </app-secondary-button>

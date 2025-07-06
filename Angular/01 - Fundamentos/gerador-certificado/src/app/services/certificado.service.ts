@@ -12,7 +12,7 @@ export class CertificadoService {
   public set certificados(value: ICertificado[]) { this._certificados = value; }
 
   public adicionarCertificado(certificado: ICertificado): void {
-    this.certificados.push({ ...certificado });
+    this.certificados.unshift({ ...certificado });
     localStorage.setItem('certificados', JSON.stringify(this._certificados));
   }
 }

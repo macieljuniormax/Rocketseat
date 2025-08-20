@@ -1,5 +1,8 @@
 package com.macielcustodio.gestao_vagas.modules.company.usecases;
 
+import java.time.Duration;
+import java.time.Instant;
+
 import javax.naming.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,7 @@ public class AuthCompanyUseCase {
     if (this.passwordEncoder.matches(authCompanyDTO.getPassword(), company.getPassword())) {
       Algorithm algorithm = Algorithm.HMAC256(tokenSecret);
       return JWT.create().withIssuer("javagas")
+          .withExpiresAt(Instant.now().plus((Duration.ofHours(2))))
           .withSubject(company.getId().toString())
           .sign(algorithm);
     } else {

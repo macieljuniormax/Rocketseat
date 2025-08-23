@@ -1,9 +1,14 @@
 {
   "properties": [
     {
-      "name": "security.token.secret",
+      "name": "security.token.secret.company",
       "type": "java.lang.String",
-      "description": "Secret key usada para geração e validação de JWT"
+      "description": "Secret key usada para geração e validação de JWT para companies"
+    },
+    {
+      "name": "security.token.secret.candidate",
+      "type": "java.lang.String",
+      "description": "Secret key usada para geração e validação de JWT para candidatos"
     }
   ]
 }

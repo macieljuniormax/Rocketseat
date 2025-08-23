@@ -3,6 +3,7 @@ package com.macielcustodio.gestao_vagas.modules.company.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.macielcustodio.gestao_vagas.modules.company.dto.CreateJobDTO;
 import com.macielcustodio.gestao_vagas.modules.company.entities.JobEntity;
 import com.macielcustodio.gestao_vagas.modules.company.usecases.CreateJobUseCase;
 
@@ -22,10 +23,15 @@ public class JobController {
   private CreateJobUseCase createJobUseCase;
 
   @PostMapping("/")
-  public JobEntity create(@Valid @RequestBody JobEntity jobEntity, HttpServletRequest httpServletRequest) {
+  public JobEntity create(@Valid @RequestBody CreateJobDTO createJobDTO, HttpServletRequest httpServletRequest) {
     var companyId = httpServletRequest.getAttribute("company_id");
 
-    jobEntity.setCompanyId(UUID.fromString(companyId.toString()));
+    var jobEntity = JobEntity.builder()
+        .level(createJobDTO.getLevel())
+        .description(createJobDTO.getDescription())
+        .benefits(createJobDTO.getBenefits())
+        .companyId(UUID.fromString(companyId.toString()))
+        .build();
 
     return this.createJobUseCase.execute(jobEntity);
   }

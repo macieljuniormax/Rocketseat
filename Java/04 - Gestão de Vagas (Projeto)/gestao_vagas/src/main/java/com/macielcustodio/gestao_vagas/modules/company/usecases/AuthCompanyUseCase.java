@@ -18,7 +18,7 @@ import com.macielcustodio.gestao_vagas.modules.company.repositories.CompanyRepos
 
 @Service
 public class AuthCompanyUseCase {
-  @Value(value = "${security.token.secret}")
+  @Value(value = "${security.token.secret.company}")
   private String tokenSecret;
 
   @Autowired
@@ -36,7 +36,8 @@ public class AuthCompanyUseCase {
 
     if (this.passwordEncoder.matches(authCompanyDTO.getPassword(), company.getPassword())) {
       Algorithm algorithm = Algorithm.HMAC256(tokenSecret);
-      return JWT.create().withIssuer("javagas")
+      return JWT.create()
+          .withIssuer("javagas")
           .withExpiresAt(Instant.now().plus((Duration.ofHours(2))))
           .withSubject(company.getId().toString())
           .sign(algorithm);

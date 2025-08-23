@@ -12,6 +12,7 @@ import com.macielcustodio.gestao_vagas.modules.company.repositories.CompanyRepos
 public class CreateCompanyUseCase {
   @Autowired
   private CompanyRepository companyRepository;
+
   @Autowired
   private PasswordEncoder passwordEncoder;
 

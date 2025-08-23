@@ -42,15 +42,17 @@ public class AuthCandidateUseCase {
 
     if (this.passwordEncoder.matches(authCandidateDTO.password(), candidate.getPassword())) {
       Algorithm algorithm = Algorithm.HMAC256(tokenSecret);
+      var expires_in = Instant.now().plus(Duration.ofMinutes(10));
       var token =  JWT.create()
           .withIssuer("javagas")
-          .withExpiresAt(Instant.now().plus((Duration.ofMinutes(10))))
+          .withExpiresAt(expires_in)
           .withClaim("roles", Arrays.asList("candidate"))
           .withSubject(candidate.getId().toString())
           .sign(algorithm);
 
       return AuthCandidateResponseDTO.builder()
           .acess_token(token)
+          .expires_in(expires_in.toEpochMilli())
           .build();
     } else {
       throw new AuthenticationException("Invalid credentials");

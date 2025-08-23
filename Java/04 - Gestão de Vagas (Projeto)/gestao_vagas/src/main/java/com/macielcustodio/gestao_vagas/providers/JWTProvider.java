@@ -9,7 +9,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 
 @Service
 public class JWTProvider {
-  @Value(value = "${security.token.secret}")
+  @Value(value = "${security.token.secret.company}")
   private String tokenSecret;
 
   public String validateToken(String token) {

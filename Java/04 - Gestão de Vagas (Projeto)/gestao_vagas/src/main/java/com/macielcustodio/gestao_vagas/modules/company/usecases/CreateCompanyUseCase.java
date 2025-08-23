@@ -17,13 +17,13 @@ public class CreateCompanyUseCase {
 
   public CompanyEntity execute(CompanyEntity companyEntity) {
     this.companyRepository
-      .findByUsernameOrEmail(companyEntity.getUsername(), companyEntity.getEmail())
-      .ifPresent((_) -> {
-        throw new UserFoundException();
-      });
+        .findByUsernameOrEmail(companyEntity.getUsername(), companyEntity.getEmail())
+        .ifPresent((_) -> {
+          throw new UserFoundException();
+        });
 
-    var password = passwordEncoder.encode(companyEntity.getPassword());
-    companyEntity.setPassword(password);
+    var hashedPassword = passwordEncoder.encode(companyEntity.getPassword());
+    companyEntity.setPassword(hashedPassword);
 
     return this.companyRepository.save(companyEntity);
   }

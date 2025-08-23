@@ -1,5 +1,7 @@
 package com.macielcustodio.gestao_vagas.modules.candidate.controllers;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.macielcustodio.gestao_vagas.modules.candidate.CandidateEntity;
 import com.macielcustodio.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
+import com.macielcustodio.gestao_vagas.modules.candidate.useCases.ProfileCandidateUseCase;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/candidate")
@@ -19,10 +23,25 @@ public class CandidateController {
   @Autowired
   private CreateCandidateUseCase createCandidateUseCase;
 
+  @Autowired
+  private ProfileCandidateUseCase profileCandidateUseCase;
+
   @PostMapping("/")
   public ResponseEntity<Object> create(@Valid @RequestBody CandidateEntity candidateEntity) {
     try {
-      var result =  this.createCandidateUseCase.execute(candidateEntity);
+      var result = this.createCandidateUseCase.execute(candidateEntity);
+      return ResponseEntity.ok().body(result);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
+  }
+
+  @GetMapping("/")
+  public ResponseEntity<Object> get(HttpServletRequest httpServletRequest) {
+    var candidateId = httpServletRequest.getAttribute("candidate_id");
+
+    try {
+      var result = this.profileCandidateUseCase.execute(UUID.fromString(candidateId.toString()));
       return ResponseEntity.ok().body(result);
     } catch (Exception e) {
       return ResponseEntity.badRequest().body(e.getMessage());

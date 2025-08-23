@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("auth/")
+@RequestMapping("candidate/")
 public class AuthCandidateController {
   @Autowired
   private AuthCandidateUseCase authCandidateUseCase;
 
-  @PostMapping("/candidate")
+  @PostMapping("/auth")
   public ResponseEntity<Object> create(@RequestBody AuthCandidateRequestDTO authCandidateRequestDTO) {
     try {
       var token = this.authCandidateUseCase.execute(authCandidateRequestDTO);

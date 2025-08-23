@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 public class SecurityConfig {
   @Autowired
-  private SecurityCompanyFilter securityFilter;
+  private SecurityCompanyFilter securityCompanyFilter;
 
   @Bean
   SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -22,7 +22,7 @@ public class SecurityConfig {
         auth.requestMatchers("/company/", "/auth/company").permitAll();
         auth.anyRequest().authenticated();
       })
-      .addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
+      .addFilterBefore(securityCompanyFilter, BasicAuthenticationFilter.class);
 
     return httpSecurity.build();
   }

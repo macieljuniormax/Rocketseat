@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class SecurityCompanyFilter extends OncePerRequestFilter {
   @Autowired
-  private JWTCompanyProvider jwtProvider;
+  private JWTCompanyProvider jwtCompanyProvider;
 
   @Override
   protected void doFilterInternal(
@@ -31,8 +31,8 @@ public class SecurityCompanyFilter extends OncePerRequestFilter {
     SecurityContextHolder.getContext().setAuthentication(null);
     String header = request.getHeader("Authorization");
 
-    if (request.getHeader("Authorization") != null) {
-      var subjectToken = this.jwtProvider.validateToken(header);
+    if (header != null) {
+      var subjectToken = this.jwtCompanyProvider.validateToken(header);
 
       if (subjectToken.isEmpty()) {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

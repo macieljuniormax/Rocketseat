@@ -23,8 +23,8 @@ public class JobController {
   private CreateJobUseCase createJobUseCase;
 
   @PostMapping("/")
-  public JobEntity create(@Valid @RequestBody CreateJobDTO createJobDTO, HttpServletRequest httpServletRequest) {
-    var companyId = httpServletRequest.getAttribute("company_id");
+  public JobEntity create(@Valid @RequestBody CreateJobDTO createJobDTO, HttpServletRequest request) {
+    var companyId = request.getAttribute("company_id");
 
     var jobEntity = JobEntity.builder()
         .level(createJobDTO.getLevel())

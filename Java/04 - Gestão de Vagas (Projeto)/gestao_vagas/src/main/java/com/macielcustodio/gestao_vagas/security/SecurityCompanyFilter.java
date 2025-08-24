@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.macielcustodio.gestao_vagas.providers.JWTCompanyProvider;
 
 import jakarta.servlet.FilterChain;
@@ -24,28 +25,41 @@ public class SecurityCompanyFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(
-    @NonNull HttpServletRequest request,
-    @NonNull HttpServletResponse response,
-    @NonNull FilterChain filterChain) throws ServletException, IOException {
+      @NonNull HttpServletRequest request,
+      @NonNull HttpServletResponse response,
+      @NonNull FilterChain filterChain) throws ServletException, IOException {
 
     SecurityContextHolder.getContext().setAuthentication(null);
+
     String header = request.getHeader("Authorization");
 
-    if (header != null) {
-      var subjectToken = this.jwtCompanyProvider.validateToken(header);
-
-      if (subjectToken.isEmpty()) {
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        return;
-      }
-
-      request.setAttribute("company_id", subjectToken);
-
-      UsernamePasswordAuthenticationToken auth =
-        new UsernamePasswordAuthenticationToken(subjectToken, null, Collections.emptyList());
-      SecurityContextHolder.getContext().setAuthentication(auth);
+    if (!isCompanyEndpoint(request) || header == null) {
+      filterChain.doFilter(request, response);
+      return;
     }
 
+    DecodedJWT decodedJWT = this.jwtCompanyProvider.validateToken(header);
+
+    if (decodedJWT == null) {
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      return;
+    }
+
+    setAuthentication(request, decodedJWT);
     filterChain.doFilter(request, response);
+  }
+
+  private boolean isCompanyEndpoint(HttpServletRequest request) {
+    return request.getRequestURI().startsWith("/company");
+  }
+
+  private void setAuthentication(HttpServletRequest request, DecodedJWT decodedJWT) {
+    String companyId = decodedJWT.getSubject();
+
+    request.setAttribute("company_id", companyId);
+
+    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(companyId, null,
+        Collections.emptyList());
+    SecurityContextHolder.getContext().setAuthentication(auth);
   }
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.macielcustodio.gestao_vagas.modules.candidate.CandidateEntity;
 import com.macielcustodio.gestao_vagas.modules.candidate.CandidateRepository;
 import com.macielcustodio.gestao_vagas.modules.candidate.dto.AuthCandidateRequestDTO;
 import com.macielcustodio.gestao_vagas.modules.candidate.dto.AuthCandidateResponseDTO;
@@ -34,7 +35,7 @@ public class AuthCandidateUseCase {
     }
 
   public AuthCandidateResponseDTO execute(AuthCandidateRequestDTO authCandidateDTO) throws AuthenticationException {
-    var candidate = this.candidateRepository
+    CandidateEntity candidate = this.candidateRepository
         .findByUsername(authCandidateDTO.username())
         .orElseThrow(() -> {
           throw new UsernameNotFoundException("Username/password incorrect");
@@ -42,11 +43,11 @@ public class AuthCandidateUseCase {
 
     if (this.passwordEncoder.matches(authCandidateDTO.password(), candidate.getPassword())) {
       Algorithm algorithm = Algorithm.HMAC256(tokenSecret);
-      var expires_in = Instant.now().plus(Duration.ofMinutes(10));
-      var token =  JWT.create()
+      Instant expires_in = Instant.now().plus(Duration.ofMinutes(10));
+      String token =  JWT.create()
           .withIssuer("javagas")
           .withExpiresAt(expires_in)
-          .withClaim("roles", Arrays.asList("candidate"))
+          .withClaim("roles", Arrays.asList("CANDIDATE"))
           .withSubject(candidate.getId().toString())
           .sign(algorithm);
 

@@ -29,7 +29,7 @@ public class SecurityCompanyFilter extends OncePerRequestFilter {
       @NonNull HttpServletResponse response,
       @NonNull FilterChain filterChain) throws ServletException, IOException {
 
-    SecurityContextHolder.getContext().setAuthentication(null);
+    // SecurityContextHolder.getContext().setAuthentication(null);
 
     String header = request.getHeader("Authorization");
 

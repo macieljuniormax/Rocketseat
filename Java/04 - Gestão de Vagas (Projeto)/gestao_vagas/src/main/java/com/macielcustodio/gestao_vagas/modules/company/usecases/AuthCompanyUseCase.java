@@ -2,6 +2,7 @@ package com.macielcustodio.gestao_vagas.modules.company.usecases;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 
 import javax.naming.AuthenticationException;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.macielcustodio.gestao_vagas.modules.company.dto.AuthCompanyDTO;
+import com.macielcustodio.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;
 import com.macielcustodio.gestao_vagas.modules.company.repositories.CompanyRepository;
 
 @Service
@@ -27,7 +29,7 @@ public class AuthCompanyUseCase {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
-  public String execute(AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
+  public AuthCompanyResponseDTO execute(AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
     var company = this.companyRepository
         .findByUsername(authCompanyDTO.getUsername())
         .orElseThrow(() -> {
@@ -36,11 +38,19 @@ public class AuthCompanyUseCase {
 
     if (this.passwordEncoder.matches(authCompanyDTO.getPassword(), company.getPassword())) {
       Algorithm algorithm = Algorithm.HMAC256(tokenSecret);
-      return JWT.create()
+      Instant expires_in = Instant.now().plus(Duration.ofMinutes(10));
+
+      String token = JWT.create()
           .withIssuer("javagas")
           .withExpiresAt(Instant.now().plus((Duration.ofHours(2))))
+          .withClaim("roles", Arrays.asList("COMPANY"))
           .withSubject(company.getId().toString())
           .sign(algorithm);
+
+      return AuthCompanyResponseDTO.builder()
+          .access_token(token)
+          .expires_in(expires_in.toEpochMilli())
+          .build();
     } else {
       throw new AuthenticationException("Invalid credentials");
     }

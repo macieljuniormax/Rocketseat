@@ -1,0 +1,20 @@
+.btn {
+    --primary-orange: #F55A00;
+    --white: #FFFFFF;
+
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px 24px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    min-width: 150px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.btn-flat {
+    background-color: var(--white);
+    border: 2px solid var(--primary-orange);
+    color: var(--primary-orange);
+}
